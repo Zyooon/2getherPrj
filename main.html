@@ -1,11 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>2GETHER</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <style>
+        .main {
+            color: black;
+
+            background-position: center;
+            background-size: cover;
+
+            background-color: white;
+            /* 배경을 흰색으로 변경 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .mypostingbox>button {
+            width: 100%;
+        }
+    </style>
+    <script type="module">
+        $("#savebtn").click(async function () {
+            $('#postingbox').toggle();
+        })
+    </script>
 </head>
+
 <body>
-    메인 페이지 입니다.
+    <div class="main">
+        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5">
+                <h1 class="display-5 fw-bold">2GETHER</h1>
+                <p class="col-md-8 fs-4 mx-auto">공부도 과제도 고민도 함께하는 2조 2gether입니다. 각기 다른 개성과 능력을 가진 팀원들이 하나의 목표를 향해 나아간다는
+                    의미를 담고 있습니다.</p>
+                <button id="savebtn" type="button" class="btn btn-outline-dark">팀원 추가</button>
+                <button id="savebtn" type="button" class="btn btn-outline-dark">팀원 조회</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mypostingbox" id="postingbox">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="imageUrl" placeholder="본인 이미지 주소">
+            <label for="floatingInput">이미지</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="name" placeholder="이름">
+            <label for="floatingInput">이름</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="age" placeholder="나이">
+            <label for="floatingInput">나이</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="blogLink" placeholder="블로그 링크">
+            <label for="floatingInput">블로그 링크</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="hobby" placeholder="취미">
+            <label for="floatingInput">취미</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="intro" placeholder="한 줄 자기소개">
+            <label for="floatingInput">한 줄 자기소개</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="tmi" placeholder="TMI">
+            <label for="floatingInput">TMI</label>
+        </div>
+        <button id="postingbtn" type="button" class="btn btn-danger">팀원 추가하기</button>
+    </div>
 </body>
+
 </html>
