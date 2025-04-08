@@ -120,6 +120,7 @@
         import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
         // Firebase 구성 정보 설정
@@ -177,7 +178,7 @@
         let docs = await getDocs(collection(db, "Intro"));
         docs.forEach((doc) => {
             let row = doc.data();
-            let docId = doc.id; // 🔥 문서 ID 가져오기
+            let docId = doc.id; //문서 ID 가져오기
             let image = row['image'];
             let name = row['name'];
 

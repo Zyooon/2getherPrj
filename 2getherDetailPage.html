@@ -118,22 +118,75 @@
         getMemberDetail(idParam);
 
 
-        function makeCard() {
+        // function makeCard() {
+        //     let userId = $('#user-id').val();
+        //     let comment = $('#comment-content').val();
+
+        //     let temp_html = `
+        //         <div class="col">
+        //             <div class="card h-100">
+        //                 <div class="card-body">
+        //                     <h5 class="card-userId">${userId}</h5>
+        //                     <p class="card-comment">${comment}</p>
+        //                 </div>
+        //             </div>
+        //         </div>`;
+
+        //     $('#card').append(temp_html);
+
+        //     $('#user-id').val("");
+        //     $('#comment-content').val("");
+        // }
+
+        $("#comment-submit").click(async function () {
             let userId = $('#user-id').val();
             let comment = $('#comment-content').val();
 
-            let temp_html = `
-                <div class="col">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h5 class="card-userId">${userId}</h5>
-                            <p class="card-comment">${comment}</p>
-                        </div>
-                    </div>
-                </div>`;
+            if (!userId || !comment) {
+                alert("아이디와 댓글을 모두 입력해주세요.");
+                return;
+            }
 
-            $('#card').append(temp_html);
+            // Firebase에 댓글 저장
+            await addDoc(collection(db, "comments"), {
+                userId: userId,
+                comment: comment,
+                memberId: idParam, // 현재 상세페이지의 팀원 ID
+                createdAt: new Date() // 선택: 시간순 정렬용
+            });
+
+            // 입력칸 비우기
+            $('#user-id').val("");
+            $('#comment-content').val("");
+
+            // 댓글 다시 불러오기
+            getComments();
+        });
+
+        async function getComments() {
+            const q = query(collection(db, "comments"), where("memberId", "==", idParam));
+            const querySnapshot = await getDocs(q);
+
+            $("#card").empty(); 
+            //이 코드가 없으면 페이지가 새로 로딩될 때마다, 
+            // 기존에 있던 글에 + 해주는거라서 추가를 할 때에는 
+            // 꼭 초기화 -> 추가 패턴이라고 합니다.
+
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                const temp_html = `
+            <div class="col mb-2">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-userId">${data.userId}</h5>
+                        <p class="card-comment">${data.comment}</p>
+                    </div>
+                </div>
+            </div>`;
+                $('#card').append(temp_html);
+            });
         }
+        getComments();
     </script>
 </head>
 
@@ -169,7 +222,7 @@
 
             </div>
             <div class="card">
-                <h5 class="card-header">이름</h5>
+                <h5 class="card-header">댓글</h5>
                 <div class="card-body">
                     <div class="form-floating mb-3" style="max-width: 800px;">
 
@@ -185,7 +238,7 @@
                             <label for="comment-content">댓글</label>
                         </div>
 
-                        <button type="button" class="btn btn-outline-dark" onclick="makeCard()">등록하기</button>
+                        <button id="comment-submit" type="button" class="btn btn-outline-dark">등록하기</button>
                     </div>
 
                     <div id="card">
