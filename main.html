@@ -452,6 +452,7 @@
     // 페이지네이션 버튼 클릭, 방명록 출력
     $(document).on('click', '.page-link', function (event) {
       event.preventDefault();
+      console.log("ㅎㅎ");
       pageNum = parseInt($(this).text());  // 클릭한 페이지 번호
       displayGuestbookData();  // 해당 페이지의 방명록 출력
     });
