@@ -177,18 +177,20 @@
         let docs = await getDocs(collection(db, "Intro"));
         docs.forEach((doc) => {
             let row = doc.data();
-            let image = row['image']
-            let name = row['name']
+            let docId = doc.id; // 🔥 문서 ID 가져오기
+            let image = row['image'];
+            let name = row['name'];
 
             let temp_html = `
-            <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?name=${name}'">
-            <img src="${image}" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">${name}</p>
-            </div>
-        </div>`;
+            <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?id=${docId}'">
+                <img src="${image}" class="card-img-top" alt="profile img" />
+                <div class="card-body">
+                    <p class="card-text">${name}</p>
+                </div>
+            </div>`;
             $('#profile').append(temp_html);
         });
+
 
         // 방명록 등록 기능
         $("#guestSubmit").click(async function () {
