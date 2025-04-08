@@ -125,7 +125,13 @@
         // Firebase 구성 정보 설정
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            //여기에 자신의 파이어베이스 API작성하시면 됩니다.
+            apiKey: "AIzaSyBpjDN7BhiyNBfu5a_2lHS88_YRqLKuG-w",
+            authDomain: "sparta-e1dce.firebaseapp.com",
+            projectId: "sparta-e1dce",
+            storageBucket: "sparta-e1dce.firebasestorage.app",
+            messagingSenderId: "1037901267217",
+            appId: "1:1037901267217:web:b90b85f7c24c74ef530cb0",
+            measurementId: "G-MYLSSH91WS"
         };
 
 
@@ -175,7 +181,7 @@
             let name = row['name']
 
             let temp_html = `
-            <div class="card">
+            <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?name=${name}'">
             <img src="${image}" class="card-img-top" alt="profile img" />
             <div class="card-body">
                 <p class="card-text">${name}</p>
@@ -287,47 +293,6 @@
 
     <!-- 팀원 조회 -->
     <div id="profile" style="display: none">
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
-        </div>
-
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
-        </div>
     </div>
 
     <div class="guestbook-container">
