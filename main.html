@@ -1,351 +1,384 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2GETHER</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
     <style>
-        .main {
-            color: black;
+      .main {
+        color: black;
 
-            background-position: center;
-            background-size: cover;
+        background-position: center;
+        background-size: cover;
 
-            background-color: white;
-            /* 배경을 흰색으로 변경 */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+        background-color: white;
+        /* 배경을 흰색으로 변경 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
 
-        .mypostingbox>button {
-            width: 100%;
-        }
+      .mypostingbox > button {
+        width: 100%;
+      }
 
-        .mypostingbox {
-            width: 500px;
-            margin: 20px auto 20px auto;
+      .mypostingbox {
+        width: 500px;
+        margin: 20px auto 20px auto;
 
-            border: 1px solid white;
-            padding: 20px;
-            border-radius: 5px;
-        }
+        border: 1px solid white;
+        padding: 20px;
+        border-radius: 5px;
+      }
 
-        #profile {
-            display: flex;
-            justify-content: center;
-        }
+      #profile {
+        display: flex;
+        justify-content: center;
+      }
 
-        .card {
-            width: 250px;
-            height: 200px;
-            margin-right: 10px;
-        }
+      .card {
+        width: 250px;
+        height: 200px;
+        margin-right: 10px;
+      }
 
-        .card>img {
-            width: 100px;
-            height: 100px;
-            margin: 20px auto;
-        }
+      .card > img {
+        width: 100px;
+        height: 100px;
+        margin: 20px auto;
+      }
 
-        .card>.card-body {
-            margin: 0 auto;
-        }
+      .card > .card-body {
+        margin: 0 auto;
+      }
 
-        .guestbook-container {
-            width: 100%;
-            margin: 50px auto;
-            padding: 30px;
-            border: 2px solid black;
-            border-radius: 15px;
-            background-color: white;
-            color: black;
-        }
+      .guestbook-container {
+        width: 100%;
+        margin: 50px auto;
+        padding: 30px;
+        border: 2px solid black;
+        border-radius: 15px;
+        background-color: white;
+        color: black;
+      }
 
-        .guestbook-title {
-            font-size: 28px;
-            margin-bottom: 25px;
-            text-align: center;
-            border-bottom: 1px solid black;
-            padding-bottom: 15px;
-        }
+      .guestbook-title {
+        font-size: 28px;
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 1px solid black;
+        padding-bottom: 15px;
+      }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+      .form-group {
+        margin-bottom: 20px;
+      }
 
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: black;
-        }
+      .form-group label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 8px;
+        color: black;
+      }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #444;
-            background-color: white;
-            color: black;
-            border-radius: 5px;
-        }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #444;
+        background-color: white;
+        color: black;
+        border-radius: 5px;
+      }
 
-        .btn-submit {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid black;
-            background-color: transparent;
-            color: black;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
+      .btn-submit {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid black;
+        background-color: transparent;
+        color: black;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
 
-        .btn-submit:hover {
-            background-color: black;
-            color: white;
-        }
+      .btn-submit:hover {
+        background-color: black;
+        color: white;
+      }
     </style>
 
     <script type="module">
-        // Firebase SDK 라이브러리 가져오기
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      // Firebase SDK 라이브러리 가져오기
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import {
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
+      // Firebase 구성 정보 설정
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyA9hgQX57a5sLVqQl_YT8pr57li-dlswCM",
+        authDomain: "sparta-fd1cb.firebaseapp.com",
+        projectId: "sparta-fd1cb",
+        storageBucket: "sparta-fd1cb.firebasestorage.app",
+        messagingSenderId: "780157294112",
+        appId: "1:780157294112:web:329e30b83f602c47870e45",
+        measurementId: "G-T7JVT8DH0E",
+      };
 
-        // Firebase 구성 정보 설정
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            //여기에 자신의 파이어베이스 API작성하시면 됩니다.
+      // Firebase 인스턴스 초기화
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      $("#postingbtn").click(async function () {
+        let image = $("#imageUrl").val();
+        let name = $("#name").val();
+        let age = $("#age").val();
+        let blogLink = $("#blogLink").val();
+        let hobby = $("#hobby").val();
+        let intro = $("#intro").val();
+        let tmi = $("#tmi").val();
+
+        let doc = {
+          image: image,
+          name: name,
+          age: age,
+          blogLink: blogLink,
+          hobby: hobby,
+          intro: intro,
+          tmi: tmi,
         };
+        await addDoc(collection(db, "Intro"), doc);
+        alert("저장 완료!");
+        window.location.reload();
+      });
 
+      // 팀원 추가
+      $("#savebtn").click(async function () {
+        $("#postingbox").toggle();
+        $("#profile").hide();
+      });
 
-        // Firebase 인스턴스 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+      //   팀원 조회
+      $("#selectbtn").click(async function () {
+        $("#profile").toggle();
+        $("#postingbox").hide();
+      });
 
-        $("#postingbtn").click(async function () {
-            let image = $('#imageUrl').val();
-            let name = $('#name').val();
-            let age = $('#age').val();
-            let blogLink = $('#blogLink').val();
-            let hobby = $('#hobby').val();
-            let intro = $('#intro').val();
-            let tmi = $('#tmi').val();
+      let docs = await getDocs(collection(db, "Intro"));
+      docs.forEach((doc) => {
+        let row = doc.data();
+        let image = row["image"];
+        let name = row["name"];
 
-            let doc = {
-                'image': image,
-                'name': name,
-                'age': age,
-                'blogLink': blogLink,
-                'hobby': hobby,
-                'intro': intro,
-                'tmi': tmi
-            };
-            await addDoc(collection(db, "Intro"), doc);
-            alert('저장 완료!');
-            window.location.reload();
-        })
-
-        // 팀원 추가
-        $("#savebtn").click(async function () {
-            $("#postingbox").toggle();
-            $("#profile").hide();
-        });
-
-        //   팀원 조회
-        $("#selectbtn").click(async function () {
-            $("#profile").toggle();
-            $("#postingbox").hide();
-        });
-
-        let docs = await getDocs(collection(db, "Intro"));
-        docs.forEach((doc) => {
-            let row = doc.data();
-            let image = row['image']
-            let name = row['name']
-
-            let temp_html = `
+        let temp_html = `
             <div class="card">
             <img src="${image}" class="card-img-top" alt="profile img" />
             <div class="card-body">
                 <p class="card-text">${name}</p>
             </div>
         </div>`;
-            $('#profile').append(temp_html);
-        });
+        $("#profile").append(temp_html);
+      });
 
-        // 방명록 등록 기능
-        $("#guestSubmit").click(async function () {
-            let name = $("#guestName").val();
-            let content = $("#guestContent").val();
+      // 방명록 등록 기능
+      $("#guestSubmit").click(async function () {
+        let name = $("#guestName").val();
+        let content = $("#guestContent").val();
 
-            if (name.trim() === "" || content.trim() === "") {
-                alert("이름과 내용을 모두 입력해주세요!");
-                return;
-            }
+        if (name.trim() === "" || content.trim() === "") {
+          alert("이름과 내용을 모두 입력해주세요!");
+          return;
+        }
 
-            let doc = {
-                name: name,
-                content: content,
-            };
+        let doc = {
+          name: name,
+          content: content,
+        };
 
-            await addDoc(collection(db, "guestbook"), doc);
-            alert("방명록이 저장되었습니다!");
-            $("#guestName").val("");
-            $("#guestContent").val("");
+        await addDoc(collection(db, "guestbook"), doc);
+        alert("방명록이 저장되었습니다!");
+        $("#guestName").val("");
+        $("#guestContent").val("");
 
-            getGuestbook(); // 다시 불러오기
-        });
+        getGuestbook(); // 다시 불러오기
+      });
 
-        async function getGuestbook() {
-            const querySnapshot = await getDocs(collection(db, "guestbook"));
+      async function getGuestbook() {
+        const querySnapshot = await getDocs(collection(db, "guestbook"));
 
-            let html = "";
-            querySnapshot.forEach((doc) => {
-                let data = doc.data();
-                html += `
+        let html = "";
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          html += `
         <div style="border-top: 1px solid #ccc; padding: 15px 0;">
             <strong>${data.name}</strong><br/>
             <p>${data.content}</p>
         </div>
         `;
-            });
+        });
 
-            // 출력 위치가 필요하므로 guestbook-container 아래에 div 추가해야 함
-            $("#guestList").html(html);
-        }
+        // 출력 위치가 필요하므로 guestbook-container 아래에 div 추가해야 함
+        $("#guestList").html(html);
+      }
 
-        // 페이지 로드 시 방명록 불러오기
-        getGuestbook();
+      // 페이지 로드 시 방명록 불러오기
+      getGuestbook();
     </script>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="main">
-        <div class="p-5 mb-4 bg-body-tertiary rounded-3">
-            <div class="container-fluid py-5">
-                <h1 class="display-5 fw-bold">2GETHER</h1>
-                <p class="col-md-8 fs-4 mx-auto">
-                    공부도 과제도 고민도 함께하는 2조 2gether입니다. 각기 다른 개성과
-                    능력을 가진 팀원들이 하나의 목표를 향해 나아간다는 의미를 담고
-                    있습니다.
-                </p>
-                <button id="savebtn" type="button" class="btn btn-outline-dark">
-                    팀원 추가
-                </button>
-                <button id="selectbtn" type="button" class="btn btn-outline-dark">
-                    팀원 조회
-                </button>
-            </div>
+      <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">2GETHER</h1>
+          <p class="col-md-8 fs-4 mx-auto">
+            공부도 과제도 고민도 함께하는 2조 2gether입니다. 각기 다른 개성과
+            능력을 가진 팀원들이 하나의 목표를 향해 나아간다는 의미를 담고
+            있습니다.
+          </p>
+          <button id="savebtn" type="button" class="btn btn-outline-dark">
+            팀원 추가
+          </button>
+          <button id="selectbtn" type="button" class="btn btn-outline-dark">
+            팀원 조회
+          </button>
         </div>
+      </div>
     </div>
 
     <!-- 팀원 추가 -->
     <div class="mypostingbox" id="postingbox">
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="imageUrl" placeholder="본인 이미지 주소" />
-            <label for="floatingInput">이미지</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="name" placeholder="이름" />
-            <label for="floatingInput">이름</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="age" placeholder="나이" />
-            <label for="floatingInput">나이</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="blogLink" placeholder="블로그 링크" />
-            <label for="floatingInput">블로그 링크</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="hobby" placeholder="취미" />
-            <label for="floatingInput">취미</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="intro" placeholder="한 줄 자기소개" />
-            <label for="floatingInput">한 줄 자기소개</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="email" class="form-control" id="tmi" placeholder="TMI" />
-            <label for="floatingInput">TMI</label>
-        </div>
-        <button id="postingbtn" type="button" class="btn btn-danger">
-            팀원 추가하기
-        </button>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="imageUrl"
+          placeholder="본인 이미지 주소"
+        />
+        <label for="floatingInput">이미지</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="name" placeholder="이름" />
+        <label for="floatingInput">이름</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="age" placeholder="나이" />
+        <label for="floatingInput">나이</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="blogLink"
+          placeholder="블로그 링크"
+        />
+        <label for="floatingInput">블로그 링크</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="hobby"
+          placeholder="취미"
+        />
+        <label for="floatingInput">취미</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control"
+          id="intro"
+          placeholder="한 줄 자기소개"
+        />
+        <label for="floatingInput">한 줄 자기소개</label>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="tmi" placeholder="TMI" />
+        <label for="floatingInput">TMI</label>
+      </div>
+      <button id="postingbtn" type="button" class="btn btn-danger">
+        팀원 추가하기
+      </button>
     </div>
 
     <!-- 팀원 조회 -->
     <div id="profile" style="display: none">
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
+      <div class="card">
+        <img src="profile.png" class="card-img-top" alt="profile img" />
+        <div class="card-body">
+          <p class="card-text">이름</p>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
+      <div class="card">
+        <img src="profile.png" class="card-img-top" alt="profile img" />
+        <div class="card-body">
+          <p class="card-text">이름</p>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
+      <div class="card">
+        <img src="profile.png" class="card-img-top" alt="profile img" />
+        <div class="card-body">
+          <p class="card-text">이름</p>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
+      <div class="card">
+        <img src="profile.png" class="card-img-top" alt="profile img" />
+        <div class="card-body">
+          <p class="card-text">이름</p>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
+      <div class="card">
+        <img src="profile.png" class="card-img-top" alt="profile img" />
+        <div class="card-body">
+          <p class="card-text">이름</p>
         </div>
+      </div>
 
-        <div class="card">
-            <img src="profile.png" class="card-img-top" alt="profile img" />
-            <div class="card-body">
-                <p class="card-text">이름</p>
-            </div>
+      <div class="card">
+        <img src="profile.png" class="card-img-top" alt="profile img" />
+        <div class="card-body">
+          <p class="card-text">이름</p>
         </div>
+      </div>
     </div>
 
     <div class="guestbook-container">
-        <div class="guestbook-title">방명록</div>
+      <div class="guestbook-title">방명록</div>
 
-        <div class="form-group">
-            <label for="guestName">이름</label>
-            <input type="text" id="guestName" placeholder="이름을 입력하세요">
-        </div>
-        <div class="form-group">
-            <label for="guestContent">방명록 내용</label>
-            <textarea id="guestContent" rows="3" placeholder="내용을 입력하세요"></textarea>
-        </div>
-        <div class="btn-submit" id="guestSubmit">등록하기</div>
+      <div class="form-group">
+        <label for="guestName">이름</label>
+        <input type="text" id="guestName" placeholder="이름을 입력하세요" />
+      </div>
+      <div class="form-group">
+        <label for="guestContent">방명록 내용</label>
+        <textarea
+          id="guestContent"
+          rows="3"
+          placeholder="내용을 입력하세요"
+        ></textarea>
+      </div>
+      <div class="btn-submit" id="guestSubmit">등록하기</div>
 
-        <div id="guestList" style="margin-top: 30px;"></div>
-
+      <div id="guestList" style="margin-top: 30px"></div>
     </div>
-</body>
-
+  </body>
 </html>
