@@ -98,6 +98,7 @@
         import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
         import { query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
 
 
         // Firebase 구성 정보 설정
@@ -119,35 +120,30 @@
 
         // URL에서 name 파라미터 가져오기
         const urlParams = new URLSearchParams(window.location.search);
-        const nameParam = urlParams.get("name");
+        const idParam = urlParams.get("id");
 
-        async function getMemberDetail(name) {
-            const q = query(collection(db, "Intro"), where("name", "==", name));
-            const querySnapshot = await getDocs(q);
-            if (!querySnapshot.empty) {
-                const data = querySnapshot.docs[0].data();
+        async function getMemberDetail(id) {
+            const docRef = doc(db, "Intro", id);
+            const docSnap = await getDoc(docRef);
 
-                // 이미지
-                const imgTag = document.querySelector(".profile-img-box img");
-                if (imgTag) {
-                    imgTag.src = data.image;
-                }
+            if (docSnap.exists()) {
+                const data = docSnap.data();
 
-                // 텍스트 정보
+                // 데이터 바인딩
+                document.querySelector(".profile-img-box img").src = data.image;
                 document.getElementById("name").innerText = data.name;
                 document.getElementById("age").innerText = data.age;
                 document.getElementById("hobby").innerText = data.hobby;
                 document.getElementById("blogLink").innerText = data.blogLink;
-
-                // input / textarea
                 document.getElementById("introText").innerText = data.intro;
                 document.getElementById("tmiText").innerText = data.tmi;
+
             } else {
-                alert("팀원 정보를 찾을 수 없습니다.");
+                alert("해당 팀원 정보를 찾을 수 없습니다.");
             }
         }
 
-        getMemberDetail(nameParam);
+        getMemberDetail(idParam);
 
 
         function makeCard() {
