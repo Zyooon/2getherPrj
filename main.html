@@ -27,6 +27,15 @@
             width: 100%;
         }
 
+        .mypostingbox {
+            width: 500px;
+            margin: 20px auto 20px auto;
+
+            border: 1px solid white;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
         #profile {
             display: flex;
             justify-content: center;
@@ -106,6 +115,47 @@
     </style>
 
     <script type="module">
+        // Firebase SDK 라이브러리 가져오기
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+
+        // Firebase 구성 정보 설정
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+            //여기에 자신의 파이어베이스 API작성하시면 됩니다.
+        };
+
+
+        // Firebase 인스턴스 초기화
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        $("#postingbtn").click(async function () {
+            let image = $('#imageUrl').val();
+            let name = $('#name').val();
+            let age = $('#age').val();
+            let blogLink = $('#blogLink').val();
+            let hobby = $('#hobby').val();
+            let intro = $('#intro').val();
+            let tmi = $('#tmi').val();
+
+            let doc = {
+                'image': image,
+                'name': name,
+                'age': age,
+                'blogLink': blogLink,
+                'hobby': hobby,
+                'intro': intro,
+                'tmi': tmi
+            };
+            await addDoc(collection(db, "Intro"), doc);
+            alert('저장 완료!');
+            window.location.reload();
+        })
+
         // 팀원 추가
         $("#savebtn").click(async function () {
             $("#postingbox").toggle();
@@ -117,6 +167,66 @@
             $("#profile").toggle();
             $("#postingbox").hide();
         });
+
+        let docs = await getDocs(collection(db, "Intro"));
+        docs.forEach((doc) => {
+            let row = doc.data();
+            let image = row['image']
+            let name = row['name']
+
+            let temp_html = `
+            <div class="card">
+            <img src="${image}" class="card-img-top" alt="profile img" />
+            <div class="card-body">
+                <p class="card-text">${name}</p>
+            </div>
+        </div>`;
+            $('#profile').append(temp_html);
+        });
+
+        // 방명록 등록 기능
+        $("#guestSubmit").click(async function () {
+            let name = $("#guestName").val();
+            let content = $("#guestContent").val();
+
+            if (name.trim() === "" || content.trim() === "") {
+                alert("이름과 내용을 모두 입력해주세요!");
+                return;
+            }
+
+            let doc = {
+                name: name,
+                content: content,
+            };
+
+            await addDoc(collection(db, "guestbook"), doc);
+            alert("방명록이 저장되었습니다!");
+            $("#guestName").val("");
+            $("#guestContent").val("");
+
+            getGuestbook(); // 다시 불러오기
+        });
+
+        async function getGuestbook() {
+            const querySnapshot = await getDocs(collection(db, "guestbook"));
+
+            let html = "";
+            querySnapshot.forEach((doc) => {
+                let data = doc.data();
+                html += `
+        <div style="border-top: 1px solid #ccc; padding: 15px 0;">
+            <strong>${data.name}</strong><br/>
+            <p>${data.content}</p>
+        </div>
+        `;
+            });
+
+            // 출력 위치가 필요하므로 guestbook-container 아래에 div 추가해야 함
+            $("#guestList").html(html);
+        }
+
+        // 페이지 로드 시 방명록 불러오기
+        getGuestbook();
     </script>
 </head>
 
@@ -224,14 +334,16 @@
         <div class="guestbook-title">방명록</div>
 
         <div class="form-group">
-            <label for="name">이름</label>
-            <input type="text" id="name" placeholder="이름을 입력하세요">
+            <label for="guestName">이름</label>
+            <input type="text" id="guestName" placeholder="이름을 입력하세요">
         </div>
         <div class="form-group">
-            <label for="content">방명록 내용</label>
-            <textarea id="content" rows="3" placeholder="내용을 입력하세요"></textarea>
+            <label for="guestContent">방명록 내용</label>
+            <textarea id="guestContent" rows="3" placeholder="내용을 입력하세요"></textarea>
         </div>
-        <div class="btn-submit">등록하기</div>
+        <div class="btn-submit" id="guestSubmit">등록하기</div>
+
+        <div id="guestList" style="margin-top: 30px;"></div>
 
     </div>
 </body>
