@@ -129,15 +129,8 @@
 
       // Firebase 구성 정보 설정
       // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       const firebaseConfig = {
-        apiKey: "AIzaSyA9hgQX57a5sLVqQl_YT8pr57li-dlswCM",
-        authDomain: "sparta-fd1cb.firebaseapp.com",
-        projectId: "sparta-fd1cb",
-        storageBucket: "sparta-fd1cb.firebasestorage.app",
-        messagingSenderId: "780157294112",
-        appId: "1:780157294112:web:329e30b83f602c47870e45",
-        measurementId: "G-T7JVT8DH0E",
+        //여기에 자신의 파이어베이스 API작성하시면 됩니다.
       };
 
       // Firebase 인스턴스 초기화
@@ -186,7 +179,7 @@
         let name = row["name"];
 
         let temp_html = `
-            <div class="card">
+            <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?name=${name}'">
             <img src="${image}" class="card-img-top" alt="profile img" />
             <div class="card-body">
                 <p class="card-text">${name}</p>
