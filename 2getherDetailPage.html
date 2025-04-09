@@ -15,7 +15,35 @@
     crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css" rel="stylesheet">
+  <!--파비콘-->
+  <link rel="icon" href="images/number2.png" type="image/png" />
   <style>
+    /* 스크롤바 */
+    ::-webkit-scrollbar {
+      width: 10px;
+      /*스크롤바의 너비*/
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(189, 189, 189);
+      /*스크롤바의 색상*/
+      border-radius: 10px;
+      /*스크롤바 라운드*/
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background-color: rgb(110, 110, 110);
+    }
+
+    ::-webkit-scrollbar-track {
+      background-color: rgb(255, 255, 255);
+      /*스크롤바 트랙 색상*/
+      border-radius: 10px;
+      /*스크롤바 트랙 라운드*/
+      box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+      /*스크롤바 트랙 안쪽 그림자*/
+    }
+
     body {
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: 700 !important;
@@ -24,12 +52,14 @@
 
     .detail-body {
       background-color: ivory;
+      width: 900px;
     }
 
     .detail-body .profile-box {
       border: 1px solid black;
       padding: 15px;
       border-radius: 10px;
+      margin: auto 0;
     }
 
     .detail-body .profile-box .wrapper {
@@ -108,9 +138,15 @@
     /* 댓글 섹션 스타일 */
     .container {
       background-color: white;
+      width: 900px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
     }
 
     .card {
+      width: 900px;
       font-family: 'Noto Sans KR', sans-serif;
       font-weight: 700 !important;
       font-style: normal;
@@ -125,11 +161,8 @@
       color: black;
       margin: 0 auto;
       /* 중앙 정렬 */
-      width: 100%;
-      /* 컨테이너 내에서 꽉 채움 */
-      max-width: 100%;
-      /* 컨테이너 너비 초과 방지 */
     }
+    
 
     .form-group {
       width: 100%;
@@ -182,6 +215,10 @@
       border: 1px solid rgb(171, 171, 171);
       border-radius: 5px;
       padding: 15px;
+    }
+    .commentBox > :nth-child(3){
+      font-weight: lighter;
+      margin: 5px 2px 5px 2px;
     }
 
     .time {
@@ -488,7 +525,7 @@
     <div class="card">
       <h5 class="card-header">댓글</h5>
       <div class="card-body">
-        <div class="form-floating mb-3" style="max-width: 800px;">
+        <div class="form-floating mb-3">
 
 
           <div class="form-floating mb-3">
