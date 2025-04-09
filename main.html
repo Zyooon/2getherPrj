@@ -183,7 +183,7 @@
     }
 
     .guestbook-container {
-      width: 70%;
+      width: 50%;
       margin: 50px auto;
       padding: 30px;
       border: 2px solid rgb(123, 89, 45);
@@ -203,7 +203,7 @@
     }
 
     .form-group {
-      width: 100%;
+      width: 90%;
       margin-bottom: 10px;
       margin-left: auto;
       margin-right: auto;
@@ -213,25 +213,26 @@
       display: block;
       font-weight: bold;
       margin-bottom: 8px;
-      color: black;
+      color: rgb(123, 89, 45);
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #444;
-      background-color: white;
+      border: 0px solid rgb(165, 165, 165);
+      background-color: rgb(246, 242, 234);
       color: black;
       border-radius: 5px;
     }
 
     .btn-location {
-      width: 100%;
+      margin-left: 5%;
+      width: 90%;
     }
 
     .btn-submit {
-      width: 100px;
+      width: 90px;
       padding: 12px;
       border: 1px solid white;
       background-color: rgb(123, 89, 45);
@@ -250,13 +251,33 @@
     }
 
     .commentBox {
-      background-color: white;
-      width: 100%;
+      width: 90%;
       margin-top: 40px;
-      border: 1px solid rgb(171, 171, 171);
       border-radius: 5px;
       margin-left: auto;
       margin-right: auto;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      border: 0px solid rgb(165, 165, 165);
+      background-color: rgb(246, 242, 234);
+    }
+
+    .commentProfile{
+      margin-left: 20px;
+    }
+    .commentContents{
+      margin-top: 5px;
+      margin-left: 20px;
+    }
+
+    .commentProfile > .fa-solid{
+      font-size: 50px;
+
+    }
+
+    .contentBox{
+      font-size: 80%;
     }
 
     .time {
@@ -271,6 +292,10 @@
     }
 
     .page-link {
+      color: rgb(123, 89, 45);
+    }
+    .count{
+      font-weight: bold;
       color: rgb(123, 89, 45);
     }
   </style>
@@ -347,7 +372,7 @@
 
       let temp_html = `
             <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?id=${docId}'">
-                <img src="${image}" class="card-img-top" alt="profile img" />
+              <img src="${image}" class="card-img-top" alt="profile img" />
                 <div class="card-body">
                     <p class="card-text">${name}</p>
                 </div>
@@ -411,6 +436,12 @@
       pagination_add();  // 페이지네이션 추가
     }
 
+    function randomRgb(){
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`
+    }
 
     // 방명록 출력
     function displayGuestbookData() {
@@ -419,11 +450,17 @@
 
       let html = "";
       commentList.forEach((data) => {
+        let rgb = randomRgb();
         html += `
                     <div class="commentBox">
+                      <div class = "commentProfile">
+                        <i class="fa-solid fa-circle-user" style = "color:${rgb}"></i>
+                      </div>
+                      <div class = "commentContents">
                         <strong>${data.name}</strong><br/>
-                        <p>${data.content}</p>
+                        <p class = "contentBox">${data.content}</p>
                         <p class="time">${data.timestamp.toDate().toLocaleString()}</p>
+                      </div>
                     </div>
                 `;
       });
@@ -433,7 +470,7 @@
 
     // 페이지네이션 추가
     function pagination_add() {
-      
+
       const pages = Math.ceil(guestbookData.length / 5);
       let html = "";
 
@@ -830,7 +867,9 @@
       <div class="btn-submit" id="guestSubmit">등록하기</div>
     </div>
     <hr>
-    <p>방명록 수: <span id="message">?</span></p>
+    <div class = "count">
+      <p>방명록 수: <span id="message">?</span></p>
+    </div>
     <div id="guestList" style="margin-top: 30px;"></div>
 
     <div class="pagination-location">
