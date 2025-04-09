@@ -300,12 +300,8 @@
                 // 데이터 바인딩
                 document.querySelector(".profile-img-box img").src = data.image;
                 document.getElementById("name").innerText = data.name;
-<<<<<<< HEAD
                 const nowAge = new Date().getFullYear() - new Date(data.birth).getFullYear();
                 document.getElementById("age").innerText = nowAge;
-=======
-                document.getElementById("birth").innerText = data.birth;
->>>>>>> 5d4c6182cc8baf8ee55c7817bece272253fd0fbd
                 document.getElementById("hobby").innerText = data.hobby;
                 document.getElementById("blogLink").innerText = data.blogLink;
                 document.getElementById("introText").innerText = data.intro;
@@ -335,6 +331,7 @@
             let doc = {
                 userId: userId,
                 comment: comment,
+                memberId : idParam,
                 timestamp: serverTimestamp()
             };
 
@@ -456,7 +453,7 @@
                                 <dt>이름 : </dt>
                                 <dd id="name" class="input-list"></dd>
                                 <dt>생년월일 : </dt>
-                                <dd id="birth" class="input-list"></dd>
+                                <dd id="age" class="input-list"></dd>
                                 <dt>취미 : </dt>
                                 <dd id="hobby" class="input-list"></dd>
                                 <dt>블로그 링크 : </dt>

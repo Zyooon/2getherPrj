@@ -31,6 +31,7 @@
     body {
       background-color: ivory;
     }
+
     /* 스크롤바 */
     ::-webkit-scrollbar {
       width: 10px;
@@ -505,13 +506,12 @@
     // Firebase 구성 정보 설정
     // For Firebase JS SDK v7.20.0 and later, measurementId is optional
     const firebaseConfig = {
-      apiKey: "AIzaSyBpjDN7BhiyNBfu5a_2lHS88_YRqLKuG-w",
-      authDomain: "sparta-e1dce.firebaseapp.com",
-      projectId: "sparta-e1dce",
-      storageBucket: "sparta-e1dce.firebasestorage.app",
-      messagingSenderId: "1037901267217",
-      appId: "1:1037901267217:web:b90b85f7c24c74ef530cb0",
-      measurementId: "G-MYLSSH91WS",
+      apiKey: "AIzaSyCVPjHmumz5vE8GeGMFX9Z1Kgkc6Br9tpM",
+      authDomain: "sparta-ec005.firebaseapp.com",
+      projectId: "sparta-ec005",
+      storageBucket: "sparta-ec005.firebasestorage.app",
+      messagingSenderId: "164807435795",
+      appId: "1:164807435795:web:cf27e6ffe27d5bc05901e6"
     };
 
     // Firebase 인스턴스 초기화
@@ -720,7 +720,7 @@
         cancelButtonText: "다시 할래요"
       }).then(async (result) => {
         if (result.isConfirmed) {
-          addDoc(collection(db, "guestbook"), doc);
+          await addDoc(collection(db, "guestbook"), doc);
           Swal.fire("등록했어요!", "", "success");
           $("#guestName").val("");
           $("#guestContent").val("");
@@ -1144,6 +1144,9 @@
 
   <!-- 팀원 추가 -->
   <div class="mypostingbox" id="postingbox" style="display: none">
+    <div style="text-align: center; font-size: 24px; font-weight: bold; color: #A47148; margin-bottom: 20px;">
+      자신을 소개해보세요 💬
+    </div>
     <div class="form-floating mb-3">
       <input type="email" class="form-control" id="imageUrl" placeholder="본인 이미지 주소" />
       <label for="floatingInput">이미지</label>
