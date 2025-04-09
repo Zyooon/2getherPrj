@@ -15,7 +15,7 @@
         crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: "Libre Baskerville", serif !important;
+            font-family: 'Noto Sans KR', sans-serif;
             font-weight: 700 !important;
             font-style: normal !important;
         }
@@ -26,7 +26,7 @@
 
         .detail-body .profile-box {
             border: 1px solid black;
-            padding: 20px;
+            padding: 15px;
             border-radius: 10px;
         }
 
@@ -50,8 +50,8 @@
         }
 
         .wrapper .profile-section .profile-img-box {
-            width: 250px;
-            height: 250px;
+            width: 150px;
+            height: 150px;
             display: flex;
             margin-right: 20px;
             border: 1px solid white;
@@ -67,20 +67,110 @@
 
         .profile-info .info {
             display: grid;
-            grid-template-columns: max-content 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 8px 20px;
-            font-size: 18px;
+            font-size: 16px;
+            word-break: break-word;
+            /*긴 텍스트 줄바꿈 처리*/
         }
+
 
         .profile-info .input-list {
             font-weight: bold;
         }
 
+        /*병아리 크기 감소 */
+        .chick {
+            font-size: 20px;
+        }
 
+        /*병아리 후버 추가 */
+        .chick {
+            display: inline-block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .chick:hover {
+            transform: rotate(15deg) scale(1.2);
+        }
+
+        /* 주석 사이를 복사*/
         #detail-title {
             text-align: center;
             font-size: 20px;
+        }
 
+
+        /* 댓글 섹션*/
+
+        /* 댓글 섹션 스타일 */
+        .container {
+            background-color: white;
+        }
+
+        .card {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-weight: 700 !important;
+            font-style: normal;
+            /* 명시적으로 지정 */
+            border: 1px solid black !important;
+            /* Bootstrap 기본 테두리 덮어쓰기 */
+            border-radius: 10px;
+            padding: 20px;
+            /* 프로필과 패딩 맞춤 */
+            background-color: ivory !important;
+            /* 배경색 설정 */
+            color: black;
+            margin: 0 auto;
+            /* 중앙 정렬 */
+            width: 100%;
+            /* 컨테이너 내에서 꽉 채움 */
+            max-width: 100%;
+            /* 컨테이너 너비 초과 방지 */
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: black;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #444;
+            background-color: white;
+            color: black;
+            border-radius: 5px;
+        }
+
+        .btn-location {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .btn-submit {
+            width: 100px;
+            padding: 12px;
+            border: 1px solid white;
+            background-color: rgb(123, 89, 45);
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: black;
+            color: white;
         }
 
         .commentBox {
@@ -89,8 +179,7 @@
             margin-top: 40px;
             border: 1px solid rgb(171, 171, 171);
             border-radius: 5px;
-            margin-left: auto;
-            margin-right: auto;
+            padding: 15px;
         }
 
         .time {
@@ -102,6 +191,65 @@
             margin-top: 5%;
             display: flex;
             justify-content: center;
+        }
+
+        .page-link {
+            color: rgb(123, 89, 45);
+        }
+
+        .comment-submit {
+            #submitBtn {
+                background-color: rgb(123, 89, 45);
+                color: white;
+                border: none;
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+        }
+
+
+
+        /* .commentBox {
+                background-color: white;
+                width: 100%;
+                margin-top: 40px;
+                border: 1px solid rgb(171, 171, 171);
+                border-radius: 5px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+    
+            .time {
+                font-size: small;
+                color: gray;
+            }
+    
+            .pagination {
+                margin-top: 5%;
+                display: flex;
+                justify-content: center;
+            } */
+        .floating-chick {
+            position: fixed;
+            bottom: 20px;
+            /* 하단 여백 */
+            right: 20px;
+            /* 우측 여백 */
+            width: 120px;
+            z-index: 9999;
+            /* 다른 요소보다 위에 오도록 */
+            pointer-events: auto;
+            /* 클릭 방해하지 않도록 */
+            opacity: 0.95;
+            transition: transform 0.3s ease;
+        }
+
+        /* 호버 시 살짝 커짐짐 */
+        .floating-chick:hover {
+            transform: scale(1.2);
         }
     </style>
     <meta charset="UTF-8" />
@@ -125,15 +273,12 @@
         // Firebase 구성 정보 설정
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
-            //도균님 API 넣고 기존 댓글 문서 다 삭제 부탁드려요! timestamp가 없어서 문서 삭제 안 하면 아무것도 출력 안 될거예요
-            //CSS 미작업 상태입니다
-            apiKey: "AIzaSyBpjDN7BhiyNBfu5a_2lHS88_YRqLKuG-w",
-            authDomain: "sparta-e1dce.firebaseapp.com",
-            projectId: "sparta-e1dce",
-            storageBucket: "sparta-e1dce.firebasestorage.app",
-            messagingSenderId: "1037901267217",
-            appId: "1:1037901267217:web:b90b85f7c24c74ef530cb0",
-            measurementId: "G-MYLSSH91WS"
+            apiKey: "AIzaSyCVPjHmumz5vE8GeGMFX9Z1Kgkc6Br9tpM",
+            authDomain: "sparta-ec005.firebaseapp.com",
+            projectId: "sparta-ec005",
+            storageBucket: "sparta-ec005.firebasestorage.app",
+            messagingSenderId: "164807435795",
+            appId: "1:164807435795:web:cf27e6ffe27d5bc05901e6"
         };
 
 
@@ -155,7 +300,12 @@
                 // 데이터 바인딩
                 document.querySelector(".profile-img-box img").src = data.image;
                 document.getElementById("name").innerText = data.name;
+<<<<<<< HEAD
+                const nowAge = new Date().getFullYear() - new Date(data.birth).getFullYear();
+                document.getElementById("age").innerText = nowAge;
+=======
                 document.getElementById("birth").innerText = data.birth;
+>>>>>>> 5d4c6182cc8baf8ee55c7817bece272253fd0fbd
                 document.getElementById("hobby").innerText = data.hobby;
                 document.getElementById("blogLink").innerText = data.blogLink;
                 document.getElementById("introText").innerText = data.intro;
@@ -283,11 +433,21 @@
     <div class="container mt-3 mb-3">
         <div class="detail-body">
             <div class="profile-box">
-                <p id="detail-title" style="font-size: 30px;">2gether Member</p>
+                <p id="detail-title" style="font-size: 30px;">🐣2gether Member🐣</p>
                 <hr>
-
                 <div class="wrapper">
                     <div class="profile-section">
+                        <div>
+                            <dd id="introText" class="input-list" style="
+                            position: absolute;
+                            top: 115px; /* 원하는 위치 조절 */
+                            left: 50%;
+                            transform: translateX(-50%);
+                            text-align: center;
+                            width: 100%;
+                            z-index: 10;
+                            font-size: 20px;"></dd>
+                        </div>
                         <div class="profile-img-box">
                             <img src="default-image" />
                         </div>
@@ -301,23 +461,9 @@
                                 <dd id="hobby" class="input-list"></dd>
                                 <dt>블로그 링크 : </dt>
                                 <dd id="blogLink" class="input-list"></dd>
+                                <dt>TMI : </dt>
+                                <dd id="tmiText" class="input-list"></dd>
                             </dl>
-                        </div>
-                    </div>
-
-                    <div class="text-section d-flex flex-column align-items-center gap-3 ">
-                        <div class="intro">
-                            <div class="mb-3">
-                                <label class="form-label"><strong>한 줄 소개</strong></label>
-                                <div id="introText" style="min-height: 50px;"></div>
-                            </div>
-                        </div>
-
-                        <div class="tmi-box">
-                            <div class="mb-3">
-                                <label class="form-label"><strong>TMI</strong></label>
-                                <div id="tmiText" style="min-height: 100px;"></div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -342,8 +488,7 @@
                             style="height: 100px;"></input>
                         <label for="comment-content">댓글</label>
                     </div>
-                    <div class="btn-location"><button id="comment-submit" type="button"
-                            class="btn-submit btn-outline-dark">등록하기</button>
+                    <div class="btn-location"><button id="comment-submit" type="button" class="btn-submit">등록하기</button>
                     </div>
                 </div>
                 <hr>
@@ -357,9 +502,20 @@
                 </nav>
             </div>
         </div>
-
-
     </div>
+
+    <!-- 병아리 이미지 우측 하단 고정 -->
+    <a href="main.html">
+        <img id="chickBtn" src="chickTogether.png" alt="투게더 병아리" class="floating-chick">
+    </a>
+    <script>
+        $(document).ready(function () {
+            $("#chickBtn").click(function () {
+                window.location.href = "index.html";
+            });
+        });
+    </script>
+
 </body>
 
 </html>
