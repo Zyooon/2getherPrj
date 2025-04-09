@@ -1,155 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2GETHER</title>
+    <!-- Swiper CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2GETHER</title>
-  <!--AJAX-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <!--폰트어썸-->
-  <script src="https://kit.fontawesome.com/2fb2def76d.js" crossorigin="anonymous"></script>
-  <!--부트스트랩-->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-  <!--폰트-->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <!--파비콘-->
-  <link rel="icon" href="images/number2.png" type="image/png">
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!--AJAX-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!--폰트어썸-->
+    <script
+      src="https://kit.fontawesome.com/2fb2def76d.js"
+      crossorigin="anonymous"
+    ></script>
+    <!--부트스트랩-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <!--폰트-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <!--파비콘-->
+    <link rel="icon" href="images/number2.png" type="image/png" />
   <!-- SweetAlert2 CDN -->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
-  <style>
-    /* 스크롤바 */
-    ::-webkit-scrollbar {
-      width: 10px;
-      /*스크롤바의 너비*/
-    }
+    <style>
+      /* 스크롤바 */
+      ::-webkit-scrollbar {
+        width: 10px;
+        /*스크롤바의 너비*/
+      }
 
-    ::-webkit-scrollbar-thumb {
-      background-color: rgb(189, 189, 189);
-      /*스크롤바의 색상*/
-      border-radius: 10px;
-      /*스크롤바 라운드*/
-    }
+      ::-webkit-scrollbar-thumb {
+        background-color: rgb(189, 189, 189);
+        /*스크롤바의 색상*/
+        border-radius: 10px;
+        /*스크롤바 라운드*/
+      }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background-color: rgb(110, 110, 110);
-    }
+      ::-webkit-scrollbar-thumb:hover {
+        background-color: rgb(110, 110, 110);
+      }
 
-    ::-webkit-scrollbar-track {
-      background-color: rgb(255, 255, 255);
-      /*스크롤바 트랙 색상*/
-      border-radius: 10px;
-      /*스크롤바 트랙 라운드*/
-      box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
-      /*스크롤바 트랙 안쪽 그림자*/
-    }
+      ::-webkit-scrollbar-track {
+        background-color: rgb(255, 255, 255);
+        /*스크롤바 트랙 색상*/
+        border-radius: 10px;
+        /*스크롤바 트랙 라운드*/
+        box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.2);
+        /*스크롤바 트랙 안쪽 그림자*/
+      }
 
-    /* Main Header 부분 CSS */
-    .header-line {
-      font-family: "Quicksand", sans-serif;
-      color: rgb(231, 158, 0);
-      font-weight: 700;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      text-align: center;
-      justify-content: space-around;
-    }
+      /* Main Header 부분 CSS */
+      .header-line {
+        font-family: "Quicksand", sans-serif;
+        color: rgb(231, 158, 0);
+        font-weight: 700;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: space-around;
+      }
 
-    .heaer-logo>span {
-      font-optical-sizing: auto;
-      font-style: normal;
-      font-size: x-large;
-    }
+      .heaer-logo > span {
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-size: x-large;
+      }
 
-    .header-etc>span {
-      margin-left: 20px;
-      margin-right: 20px;
-    }
+      .header-etc > span {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
 
-    .main {
-      font-family: "Quicksand", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 700;
-      font-style: normal;
-      height: 400px;
-      color: aliceblue;
+      .main {
+        font-family: "Quicksand", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        height: 400px;
+        color: aliceblue;
 
-      background-image: url('images/twogetherMain.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
+        background-image: url("images/twogetherMain.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-    }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
 
-    .main-words {
-      border-radius: 50px;
-      margin-top: 50px;
-      margin-bottom: 50px;
-      background-color: rgba(41, 41, 41, 0.4);
-      padding: 20px;
-    }
+      .main-words {
+        border-radius: 50px;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background-color: rgba(41, 41, 41, 0.4);
+        padding: 20px;
+      }
 
-    .main h1 {
-      margin-bottom: 20px;
-      letter-spacing: 10px;
-    }
+      .main h1 {
+        margin-bottom: 20px;
+        letter-spacing: 10px;
+      }
 
-    .main p {
-      margin-bottom: 3px;
-    }
+      .main p {
+        margin-bottom: 3px;
+      }
 
-    /* 버튼 박스 부분 */
-    .main-btn-box {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      text-align: center;
-      gap: 10px;
-      width: 870px;
-      box-sizing: border-box;
+      /* 버튼 박스 부분 */
+      .main-btn-box {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        text-align: center;
+        gap: 10px;
+        width: 870px;
+        box-sizing: border-box;
+      }
 
-    }
+      .main-btn-box > button {
+        width: 100px;
+        padding: 10px 16px;
+        background-color: rgba(255, 255, 255, 0);
+        border: 0px;
+        border-radius: 8px;
 
-    .main-btn-box>button {
-      width: 100px;
-      padding: 10px 16px;
-      background-color: rgba(255, 255, 255, 0);
-      border: 0px;
-      border-radius: 8px;
+        font-family: "Quicksand", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        font-size: large;
+        color: rgb(73, 73, 73);
 
-      font-family: "Quicksand", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 700;
-      font-style: normal;
-      font-size: large;
-      color: rgb(73, 73, 73);
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+      }
 
-      cursor: pointer;
-      transition: background-color 0.3s, color 0.3s;
-    }
+      /* 마우스 오버 시 */
+      .main-btn-box > button:hover {
+        background-color: rgba(255, 255, 255, 0.753);
+        color: rgb(73, 73, 73);
+        font-size: medium;
+      }
 
-    /* 마우스 오버 시 */
-    .main-btn-box>button:hover {
-      background-color: rgba(255, 255, 255, 0.753);
-      color: rgb(73, 73, 73);
-      font-size: medium;
-    }
-
-    /* 클릭 시 */
-    .main-btn-box>button:active {
-      background-color: rgba(231, 158, 0, 0.4);
-      color: rgb(0, 0, 0);
-    }
+      /* 클릭 시 */
+      .main-btn-box > button:active {
+        background-color: rgba(231, 158, 0, 0.4);
+        color: rgb(0, 0, 0);
+      }
 
 
     .mypostingbox {
@@ -209,29 +226,49 @@
       transform: translateY(-2px);
     }
 
-    #profile {
-      display: flex;
-      justify-content: center;
-    }
+      /* 팀원 조회 */
+      .mySwiper {
+        width: 100%;
+        max-width: 1050px;
+        margin: auto;
+        position: relative;
+        padding: 20px 40px; /*화살표 겹치지 않게 여백*/
+        box-sizing: border-box;
+      }
 
-    .card {
-      width: 250px;
-      height: 200px;
-      margin-right: 10px;
-    }
+      .mySwiper .swiper-slide {
+        display: flex;
+        justify-content: center;
+      }
 
-    .card>img {
-      width: 100px;
-      height: 100px;
-      margin: 20px auto;
-    }
+      .card {
+        width: 250px;
+        height: 230px;
+        margin-right: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border: none;
+        border-radius: 8px;
+        overflow: hidden;
+        background-color: #f9f9f9;
+      }
 
-    .card>.card-body {
-      margin: 0 auto;
-    }
+      .card > img {
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin: 20px auto 10px;
+      }
+
+      .card > .card-body {
+        padding-top: 10px;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: bold;
+      }
 
     .guestbook-container {
-      width: 70%;
+      width: 50%;
       margin: 50px auto;
       padding: 30px;
       border: 2px solid rgb(123, 89, 45);
@@ -240,18 +277,18 @@
       color: black;
     }
 
-    .guestbook-title {
-      color: rgb(123, 89, 45);
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 25px;
-      text-align: center;
-      border-bottom: 1px solid black;
-      padding-bottom: 15px;
-    }
+      .guestbook-title {
+        color: rgb(123, 89, 45);
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        text-align: center;
+        border-bottom: 1px solid black;
+        padding-bottom: 15px;
+      }
 
     .form-group {
-      width: 100%;
+      width: 90%;
       margin-bottom: 10px;
       margin-left: auto;
       margin-right: auto;
@@ -261,25 +298,26 @@
       display: block;
       font-weight: bold;
       margin-bottom: 8px;
-      color: black;
+      color: rgb(123, 89, 45);
     }
 
     .form-group input,
     .form-group textarea {
       width: 100%;
       padding: 12px;
-      border: 1px solid #444;
-      background-color: white;
+      border: 0px solid rgb(165, 165, 165);
+      background-color: rgb(246, 242, 234);
       color: black;
       border-radius: 5px;
     }
 
     .btn-location {
-      width: 100%;
+      margin-left: 5%;
+      width: 90%;
     }
 
     .btn-submit {
-      width: 100px;
+      width: 90px;
       padding: 12px;
       border: 1px solid white;
       background-color: rgb(123, 89, 45);
@@ -291,65 +329,97 @@
       margin-left: auto;
     }
 
-    .btn-submit:hover {
-      background-color: black;
-      color: white;
-      border-bottom: red;
-    }
+      .btn-submit:hover {
+        background-color: black;
+        color: white;
+        border-bottom: red;
+      }
 
     .commentBox {
-      background-color: white;
-      width: 100%;
+      width: 90%;
       margin-top: 40px;
-      border: 1px solid rgb(171, 171, 171);
       border-radius: 5px;
       margin-left: auto;
       margin-right: auto;
-    }
-
-    .time {
-      font-size: small;
-      color: gray;
-    }
-
-    .pagination {
-      margin-top: 5%;
       display: flex;
-      justify-content: center;
+      flex-direction: row;
+      align-items: center;
+      border: 0px solid rgb(165, 165, 165);
+      background-color: rgb(246, 242, 234);
     }
+
+    .commentProfile{
+      margin-left: 20px;
+    }
+    .commentContents{
+      margin-top: 5px;
+      margin-left: 20px;
+    }
+
+    .commentProfile > .fa-solid{
+      font-size: 50px;
+
+    }
+
+    .contentBox{
+      font-size: 80%;
+    }
+
+      .time {
+        font-size: small;
+        color: gray;
+      }
+
+      .pagination {
+        margin-top: 5%;
+        display: flex;
+        justify-content: center;
+      }
 
     .page-link {
       color: rgb(123, 89, 45);
     }
+    .count{
+      font-weight: bold;
+      color: rgb(123, 89, 45);
+    }
   </style>
 
-  <script type="module">
-    // Firebase SDK 라이브러리 가져오기
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-    import { serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"; // serverTimestamp import 추가
-    import { doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"; // 방문자 수 관련 추가
+    <script type="module">
+      // Firebase SDK 라이브러리 가져오기
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+      import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import {
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import {
+        query,
+        where,
+      } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+      import { serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"; // serverTimestamp import 추가
+      import {
+        doc,
+        getDoc,
+        setDoc,
+      } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"; // 방문자 수 관련 추가
 
+      // Firebase 구성 정보 설정
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyBpjDN7BhiyNBfu5a_2lHS88_YRqLKuG-w",
+        authDomain: "sparta-e1dce.firebaseapp.com",
+        projectId: "sparta-e1dce",
+        storageBucket: "sparta-e1dce.firebasestorage.app",
+        messagingSenderId: "1037901267217",
+        appId: "1:1037901267217:web:b90b85f7c24c74ef530cb0",
+        measurementId: "G-MYLSSH91WS",
+      };
 
-    // Firebase 구성 정보 설정
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-    const firebaseConfig = {
-      apiKey: "AIzaSyBpjDN7BhiyNBfu5a_2lHS88_YRqLKuG-w",
-      authDomain: "sparta-e1dce.firebaseapp.com",
-      projectId: "sparta-e1dce",
-      storageBucket: "sparta-e1dce.firebasestorage.app",
-      messagingSenderId: "1037901267217",
-      appId: "1:1037901267217:web:b90b85f7c24c74ef530cb0",
-      measurementId: "G-MYLSSH91WS"
-    };
-
-
-    // Firebase 인스턴스 초기화
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
+      // Firebase 인스턴스 초기화
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
 
     $("#postingbtn").click(async function () {
       let image = $('#imageUrl').val().trim();
@@ -483,97 +553,121 @@
       $("#postingbox").slideUp();
     });
 
-    let docs = await getDocs(collection(db, "Intro"));
-    docs.forEach((doc) => {
-      let row = doc.data();
-      let docId = doc.id; //문서 ID 가져오기
-      let image = row['image'];
-      let name = row['name'];
+      // 팀원 추가할 경우 프로필 생성
+      let docs = await getDocs(collection(db, "Intro"));
+      docs.forEach((doc) => {
+        let row = doc.data();
+        let docId = doc.id; //문서 ID 가져오기
+        let image = row["image"];
+        let name = row["name"];
 
-      let temp_html = `
-            <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?id=${docId}'">
-                <img src="${image}" class="card-img-top" alt="profile img" />
-                <div class="card-body">
-                    <p class="card-text">${name}</p>
-                </div>
+        let temp_html = `
+            <div class = "swiper-slide">
+              <div class="card" style="cursor:pointer" onclick="location.href='2getherDetailPage.html?id=${docId}'">
+                  <img src="${image}" class="card-img-top" alt="profile img" />
+                  <div class="card-body">
+                      <p class="card-text">${name}</p>
+                  </div>
+              </div>
             </div>`;
-      $('#profile').append(temp_html);
-    });
+        $("#profile").append(temp_html);
+      });
 
+      // 슬라이드 동작 (초기화)
+      const swiper = new Swiper(".mySwiper", {
+        slidesPerView: 3, // 한 화면에 보일 카드 개수
+        spaceBetween: 30, // 카드 간 간격(px)
+        navigation: {
+          nextEl: ".swiper-button-next", // 다음 버튼 클래스
+          prevEl: ".swiper-button-prev", // 이전 버튼 클래스
+        },
+      });
 
-    // 방명록 등록 기능
-    let guestbookData = [];
-    let pageNum = 1;
+      // 방명록 등록 기능
+      let guestbookData = [];
+      let pageNum = 1;
 
-    // 방명록 등록 기능
-    $("#guestSubmit").click(async function () {
-      let name = $("#guestName").val();
-      let content = $("#guestContent").val();
+      // 방명록 등록 기능
+      $("#guestSubmit").click(async function () {
+        let name = $("#guestName").val();
+        let content = $("#guestContent").val();
 
-      if (name.trim() === "" || content.trim() === "") {
-        alert("이름과 내용을 모두 입력해주세요!");
-        return;
+        if (name.trim() === "" || content.trim() === "") {
+          alert("이름과 내용을 모두 입력해주세요!");
+          return;
+        }
+
+        let doc = {
+          name: name,
+          content: content,
+          timestamp: serverTimestamp(),
+        };
+
+        await addDoc(collection(db, "guestbook"), doc);
+        alert("방명록이 저장되었습니다!");
+        $("#guestName").val("");
+        $("#guestContent").val("");
+
+        getGuestbookCount(); //방명록 개수 세기
+        getGuestbook(); // 데이터를 다시 불러오기
+      });
+
+      // 방명록 개수
+      async function getGuestbookCount() {
+        const querySnapshot = await getDocs(collection(db, "guestbook"));
+        const count = querySnapshot.size; // 컬렉션의 문서 수를 가져옴
+        $("#message").text(count); // 방명록 수 표시
       }
 
-      let doc = {
-        name: name,
-        content: content,
-        timestamp: serverTimestamp()
-      };
+      // 방명록 데베에서 로드
+      async function getGuestbook() {
+        const querySnapshot = await getDocs(collection(db, "guestbook"));
+        guestbookData = [];
 
-      await addDoc(collection(db, "guestbook"), doc);
-      alert("방명록이 저장되었습니다!");
-      $("#guestName").val("");
-      $("#guestContent").val("");
-
-      getGuestbookCount(); //방명록 개수 세기
-      getGuestbook();  // 데이터를 다시 불러오기
-    });
-
-    // 방명록 개수
-    async function getGuestbookCount() {
-      const querySnapshot = await getDocs(collection(db, "guestbook"));
-      const count = querySnapshot.size;  // 컬렉션의 문서 수를 가져옴
-      $("#message").text(count);  // 방명록 수 표시
-    }
-
-    // 방명록 데베에서 로드
-    async function getGuestbook() {
-      const querySnapshot = await getDocs(collection(db, "guestbook"));
-      guestbookData = [];
-
-      querySnapshot.forEach((doc) => {
-        let data = doc.data();
-        guestbookData.push({
-          ...data,
-          id: doc.id // 문서 ID도 함께 저장
+        querySnapshot.forEach((doc) => {
+          let data = doc.data();
+          guestbookData.push({
+            ...data,
+            // i: doc.id, // 문서 ID도 함께 저장
+          });
         });
-      });
-      // timestamp 기준으로 내림차순 정렬
-      guestbookData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);  // 서버 timestamp 비교
+        // timestamp 기준으로 내림차순 정렬
+        guestbookData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds); // 서버 timestamp 비교
 
       displayGuestbookData();
       pagination_add();  // 페이지네이션 추가
     }
 
+    function randomRgb(){
+      let r = Math.floor(Math.random() * 256);
+      let g = Math.floor(Math.random() * 256);
+      let b = Math.floor(Math.random() * 256);
+      return `rgb(${r}, ${g}, ${b})`
+    }
 
-    // 방명록 출력
-    function displayGuestbookData() {
-      let commentList = guestbookData.slice((pageNum - 1) * 5, pageNum * 5);
-      $("#guestList .commentBox").remove();// 기존의 방명록 없애기_다시 출력할꺼니까
+      // 방명록 출력
+      function displayGuestbookData() {
+        let commentList = guestbookData.slice((pageNum - 1) * 5, pageNum * 5);
+        $("#guestList .commentBox").remove(); // 기존의 방명록 없애기_다시 출력할꺼니까
 
       let html = "";
       commentList.forEach((data) => {
+        let rgb = randomRgb();
         html += `
                     <div class="commentBox">
+                      <div class = "commentProfile">
+                        <i class="fa-solid fa-circle-user" style = "color:${rgb}"></i>
+                      </div>
+                      <div class = "commentContents">
                         <strong>${data.name}</strong><br/>
-                        <p>${data.content}</p>
+                        <p class = "contentBox">${data.content}</p>
                         <p class="time">${data.timestamp.toDate().toLocaleString()}</p>
+                      </div>
                     </div>
                 `;
-      });
-      $("#guestList").append(html);
-    }
+        });
+        $("#guestList").append(html);
+      }
 
 
     // 페이지네이션 추가
@@ -582,344 +676,353 @@
       const pages = Math.ceil(guestbookData.length / 5);
       let html = "";
 
-      // 페이지네이션 버튼 추가
-      for (let i = 0; i < pages; i++) {
-        html += `
+        // 페이지네이션 버튼 추가
+        for (let i = 0; i < pages; i++) {
+          html += `
                     <li class="page-item">
                         <a class="page-link" href="#">${i + 1}</a>
                     </li>
                 `;
+        }
+
+        $(".pagination").html(html); // 페이지네이션을 추가
       }
 
-      $(".pagination").html(html);  // 페이지네이션을 추가
-    }
+      // 페이지네이션 버튼 클릭, 방명록 출력
+      $(document).on("click", ".page-link", function (event) {
+        event.preventDefault();
+        console.log("ㅎㅎ");
+        pageNum = parseInt($(this).text()); // 클릭한 페이지 번호
+        displayGuestbookData(); // 해당 페이지의 방명록 출력
+      });
 
-    // 페이지네이션 버튼 클릭, 방명록 출력
-    $(document).on('click', '.page-link', function (event) {
-      event.preventDefault();
-      console.log("ㅎㅎ");
-      pageNum = parseInt($(this).text());  // 클릭한 페이지 번호
-      displayGuestbookData();  // 해당 페이지의 방명록 출력
-    });
+      $(document).ready(function () {
+        // 데베 로드
+        getGuestbook();
 
-    $(document).ready(function () {
-      // 데베 로드
-      getGuestbook();
+        // 개수 카운트
+        getGuestbookCount();
+      });
 
-      // 개수 카운트
-      getGuestbookCount();
-    });
+      //---------------------------------------------------------------------------------------
 
+      // 일정 시간마다 방문자 수 증가
+      setInterval(() => {
+        // 일정 시간마다 실행할 함수
+        updateVisitorCount(); // 방문자 수 증가 로직
+      }, 1000 * 2); // n초마다 실행
 
-    //---------------------------------------------------------------------------------------
+      // 방문자 수 올라갈때 애니메이션 추가
+      function animateCountUp(element, start, end, duration = 2000) {
+        const range = end - start;
+        const startTime = performance.now();
 
-    // 일정 시간마다 방문자 수 증가
-    setInterval(() => {
-      // 일정 시간마다 실행할 함수
-      updateVisitorCount(); // 방문자 수 증가 로직
-    }, 1000 * 2); // n초마다 실행
+        function update(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const currentValue = Math.floor(start + range * progress);
 
-    // 방문자 수 올라갈때 애니메이션 추가
-    function animateCountUp(element, start, end, duration = 2000) {
-      const range = end - start;
-      const startTime = performance.now();
+          element.textContent = `방문자 수 : ${currentValue}`;
 
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const currentValue = Math.floor(start + range * progress);
-
-        element.textContent = `방문자 수 : ${currentValue}`;
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-
-      requestAnimationFrame(update);
-    }
-
-    let firstVisit = true;
-
-    // 방문자 수 불러오고 +1 업데이트
-    async function updateVisitorCount() {
-      try {
-        // 문서 참조
-        const visitRef = doc(db, "siteCount", "visitCount");
-        const snapshot = await getDoc(visitRef);
-        const randomCount = Math.floor(Math.random() * 5) + 1;
-
-        let countAll = 0;
-
-        // 데이터 읽기
-        if (snapshot.exists()) {
-          countAll = snapshot.data().countAll || 0;
-        }
-
-        if (countAll > 1000) {
-          countAll = 0;
-        }
-
-        if (firstVisit) {
-          countAll += 1;
-          firstVisit = false;
-        } else {
-          countAll += randomCount;
-        }
-
-        // 데이터 업데이트
-        await setDoc(visitRef, { countAll });
-
-        // span 태그 내의 문자열 가져와서 숫자 값만 남김
-        const header_count = document.getElementById("header_count");
-        const currentDisplay = parseInt(header_count.textContent.replace(/\D/g, "")) || 0;
-
-        // 방문자 수 올라갈때 애니메이션 추가
-        animateCountUp(header_count, currentDisplay, countAll);
-
-      } catch (error) {
-        console.error("방문자 수 업데이트 실패:", error);
-      }
-    }
-
-    // 방문자 함수 실행
-    updateVisitorCount();
-
-    //---------------------------------------------------------------------------------------
-
-    // 날씨 관련
-    // 좌표 설정 (서울 종로구 기준: nx=60, ny=127)
-    let nx, ny;
-    //현재 위치값 가져오는 API
-    navigator.geolocation.getCurrentPosition(success, error);
-
-    function success(position) {
-      // 실제 포지션 값
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-
-      // 기상청 API에 적용할 수 있게 가공
-      const result = dfs_xy_conv(lat, lon);
-      nx = result.nx;
-      ny = result.ny;
-
-      // 임의의 좌표 생성시 사용
-      nx = 20;
-      ny = 127;
-      console.log("현재 격자 좌표:", nx, ny);
-
-      getWeather(nx, ny)
-    }
-
-    function error(err) {
-      console.error("위치 정보를 가져올 수 없습니다:", err.message);
-    }
-
-    // 위도,경도를 기상청API에 사용하도록 가공 (기상청 공식 함수)
-    function dfs_xy_conv(lat, lon) {
-      const RE = 6371.00877; // 지구 반지름(km)
-      const GRID = 5.0;      // 격자 간격(km)
-      const SLAT1 = 30.0;
-      const SLAT2 = 60.0;
-      const OLON = 126.0;
-      const OLAT = 38.0;
-      const XO = 43;
-      const YO = 136;
-
-      const DEGRAD = Math.PI / 180.0;
-      const re = RE / GRID;
-      const slat1 = SLAT1 * DEGRAD;
-      const slat2 = SLAT2 * DEGRAD;
-      const olon = OLON * DEGRAD;
-      const olat = OLAT * DEGRAD;
-
-      let sn = Math.tan(Math.PI * 0.25 + slat2 * 0.5) / Math.tan(Math.PI * 0.25 + slat1 * 0.5);
-      sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
-
-      let sf = Math.tan(Math.PI * 0.25 + slat1 * 0.5);
-      sf = Math.pow(sf, sn) * Math.cos(slat1) / sn;
-
-      let ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
-      ro = re * sf / Math.pow(ro, sn);
-
-      const ra = Math.tan(Math.PI * 0.25 + lat * DEGRAD * 0.5);
-      const r = re * sf / Math.pow(ra, sn);
-
-      let theta = lon * DEGRAD - olon;
-      if (theta > Math.PI) theta -= 2.0 * Math.PI;
-      if (theta < -Math.PI) theta += 2.0 * Math.PI;
-      theta *= sn;
-
-      const x = Math.floor(r * Math.sin(theta) + XO + 0.5);
-      const y = Math.floor(ro - r * Math.cos(theta) + YO + 0.5);
-
-      return { nx: x, ny: y };
-    }
-
-    // 현재 시간 기준으로 기상청 기준 날짜 가져오는 함수
-    function getBaseTime() {
-      const now = new Date();
-      const hour = now.getHours();
-
-      const times = [2, 5, 8, 11, 14, 17, 20, 23]; // 기상청 지원 base 시간
-      let baseHour = 23; // 기본값 (가장 늦은 시간)
-
-      for (let i = 0; i < times.length; i++) {
-        if (hour < times[i]) {
-          baseHour = times[i - 1] ?? 23; // 제일 이른 시간 전이면 23시 (전날)
-          break;
-        }
-      }
-
-      return String(baseHour).padStart(2, '0') + '00';
-    }
-
-    // 날씨 정도 가져오는 함수
-    function getWeather(nx, ny) {
-      console.log("지금 나의 위치 :: " + nx + ny)
-
-      // 오늘 날짜와 적절한 base_time 계산
-      const base_date = new Date().toISOString().slice(0, 10).replace(/-/g, '');
-      const base_time = getBaseTime(); //3시간 단위 (0500, 0800 ...)
-
-      console.log("기준시간 ::: " + base_time)
-
-      // 날씨 API 에서 인코딩된 키 사용
-      const serviceKey = "B%2FPWusMdlDVh0QO2vrTiYOKte6sWDCN5MD9FQR5LPquOyR53Usl%2F%2Fb%2FN3zToN%2BFGYDl2lY6BJos%2F7NOVbWD%2ByA%3D%3D";
-
-      const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${serviceKey}&pageNo=1&numOfRows=1000&dataType=JSON&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}`;
-
-      console.log(url);
-
-      const weatherinfo = document.getElementById("header_whether");
-      fetch(url)
-        .then(response => {
-          if (!response.ok) {
-            throw new Error("네트워크 응답에 문제가 있습니다.");
+          if (progress < 1) {
+            requestAnimationFrame(update);
           }
-          return response.json();
-        })
-        .then(data => {
-          const items = data.response.body.items.item;
+        }
 
-          // 예보 시간 기준으로 정렬 (선택 사항)
-          const forecast = {};
+        requestAnimationFrame(update);
+      }
 
-          items.forEach(item => {
-            const time = item.fcstTime;
-            if (!forecast[time]) forecast[time] = {};
+      let firstVisit = true;
 
-            if (item.category === "TMP") {
-              forecast[time].temp = item.fcstValue;
-            } else if (item.category === "SKY") {
-              forecast[time].sky = item.fcstValue;
-            } else if (item.category === "PTY") {
-              forecast[time].pty = item.fcstValue;
-            }
-          });
+      // 방문자 수 불러오고 +1 업데이트
+      async function updateVisitorCount() {
+        try {
+          // 문서 참조
+          const visitRef = doc(db, "siteCount", "visitCount");
+          const snapshot = await getDoc(visitRef);
+          const randomCount = Math.floor(Math.random() * 5) + 1;
 
-          // 상태 매핑 (FontAwesome 아이콘 사용)
-          const skyMap = {
-            "1": "fas fa-sun", // 맑음
-            "3": "fas fa-cloud-sun", // 흐림
-            "4": "fa-solid fa-smog" // 구름
-          };
-          const ptyMap = {
-            "0": "없음",
-            "1": "fa-solid fa-umbrella", // 비
-            "2": "fa-solid fa-cloud-meatball", // 비/눈
-            "3": "fa-solid fa-snowflake", // 눈
-            "4": "fa-solid fa-cloud-showers-heavy", // 소나기
-            "5": "fa-solid fa-cloud-rain", // 비
-            "6": "fa-solid fa-cloud-meatball", // 함박눈
-            "7": "fa-solid fa-cloud-meatball" // 함박눈
-          };
+          let countAll = 0;
 
-          // 시간 정보
-          const forecastTimes = Object.keys(forecast);
+          // 데이터 읽기
+          if (snapshot.exists()) {
+            countAll = snapshot.data().countAll || 0;
+          }
 
-          // 전체 예보 시간 중 첫 번째 항목만 선택
-          if (forecastTimes.length > 0) {
-            const selectedTime = forecastTimes[0];
-            const tmp = forecast[selectedTime].temp;
+          if (countAll > 1000) {
+            countAll = 0;
+          }
 
-            let status = null;
-
-            if (forecast[selectedTime].pty == 0) {
-              status = skyMap[forecast[selectedTime].sky];
-            } else {
-              status = ptyMap[forecast[selectedTime].pty];
-            }
-
-            console.log(`[${selectedTime}] 기온: ${tmp}°C / 상태: ${status}`);
-            let whetherTag = `<i class="${status}"></i> &nbsp; ${tmp}°C`
-            weatherinfo.innerHTML = whetherTag;
+          if (firstVisit) {
+            countAll += 1;
+            firstVisit = false;
           } else {
-            console.log("예보 정보가 없습니다.");
+            countAll += randomCount;
           }
-        })
-        .catch(error => {
-          console.error("날씨 정보를 가져오는 데 실패했습니다:", error);
-        });
-    }
 
-    // 버튼1 애니메이션
-    const savebtn = document.getElementById("savebtn");
+          // 데이터 업데이트
+          await setDoc(visitRef, { countAll });
 
-    const originalText = `<i class="fa-solid fa-user-plus"></i>`;
-    const hoverText = "멤버추가";
+          // span 태그 내의 문자열 가져와서 숫자 값만 남김
+          const header_count = document.getElementById("header_count");
+          const currentDisplay =
+            parseInt(header_count.textContent.replace(/\D/g, "")) || 0;
 
-    savebtn.addEventListener("mouseover", () => {
-      savebtn.innerHTML = hoverText;
-    });
+          // 방문자 수 올라갈때 애니메이션 추가
+          animateCountUp(header_count, currentDisplay, countAll);
+        } catch (error) {
+          console.error("방문자 수 업데이트 실패:", error);
+        }
+      }
 
-    savebtn.addEventListener("mouseout", () => {
-      savebtn.innerHTML = originalText;
-    });
+      // 방문자 함수 실행
+      updateVisitorCount();
 
-    // 버튼2 애니메이션
-    const selectbtn = document.getElementById("selectbtn");
+      //---------------------------------------------------------------------------------------
 
-    const originalText2 = `<i class="fa-solid fa-people-group"></i>`;
-    const hoverText2 = "멤버조회";
+      // 날씨 관련
+      // 좌표 설정 (서울 종로구 기준: nx=60, ny=127)
+      let nx, ny;
+      //현재 위치값 가져오는 API
+      navigator.geolocation.getCurrentPosition(success, error);
 
-    selectbtn.addEventListener("mouseover", () => {
-      selectbtn.innerHTML = hoverText2;
-    });
+      function success(position) {
+        // 실제 포지션 값
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
 
-    selectbtn.addEventListener("mouseout", () => {
-      selectbtn.innerHTML = originalText2;
-    });
+        // 기상청 API에 적용할 수 있게 가공
+        const result = dfs_xy_conv(lat, lon);
+        nx = result.nx;
+        ny = result.ny;
 
+        // 임의의 좌표 생성시 사용
+        nx = 20;
+        ny = 127;
+        console.log("현재 격자 좌표:", nx, ny);
 
+        getWeather(nx, ny);
+      }
 
+      function error(err) {
+        console.error("위치 정보를 가져올 수 없습니다:", err.message);
+      }
 
+      // 위도,경도를 기상청API에 사용하도록 가공 (기상청 공식 함수)
+      function dfs_xy_conv(lat, lon) {
+        const RE = 6371.00877; // 지구 반지름(km)
+        const GRID = 5.0; // 격자 간격(km)
+        const SLAT1 = 30.0;
+        const SLAT2 = 60.0;
+        const OLON = 126.0;
+        const OLAT = 38.0;
+        const XO = 43;
+        const YO = 136;
 
-  </script>
-</head>
+        const DEGRAD = Math.PI / 180.0;
+        const re = RE / GRID;
+        const slat1 = SLAT1 * DEGRAD;
+        const slat2 = SLAT2 * DEGRAD;
+        const olon = OLON * DEGRAD;
+        const olat = OLAT * DEGRAD;
 
-<body>
-  <div class="header-line">
-    <div class="heaer-logo">
-      <span><i class="fa-solid fa-2"></i></span>
-      <span>GETHER</span>
+        let sn =
+          Math.tan(Math.PI * 0.25 + slat2 * 0.5) /
+          Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+        sn = Math.log(Math.cos(slat1) / Math.cos(slat2)) / Math.log(sn);
+
+        let sf = Math.tan(Math.PI * 0.25 + slat1 * 0.5);
+        sf = (Math.pow(sf, sn) * Math.cos(slat1)) / sn;
+
+        let ro = Math.tan(Math.PI * 0.25 + olat * 0.5);
+        ro = (re * sf) / Math.pow(ro, sn);
+
+        const ra = Math.tan(Math.PI * 0.25 + lat * DEGRAD * 0.5);
+        const r = (re * sf) / Math.pow(ra, sn);
+
+        let theta = lon * DEGRAD - olon;
+        if (theta > Math.PI) theta -= 2.0 * Math.PI;
+        if (theta < -Math.PI) theta += 2.0 * Math.PI;
+        theta *= sn;
+
+        const x = Math.floor(r * Math.sin(theta) + XO + 0.5);
+        const y = Math.floor(ro - r * Math.cos(theta) + YO + 0.5);
+
+        return { nx: x, ny: y };
+      }
+
+      // 현재 시간 기준으로 기상청 기준 날짜 가져오는 함수
+      function getBaseTime() {
+        const now = new Date();
+        const hour = now.getHours();
+
+        const times = [2, 5, 8, 11, 14, 17, 20, 23]; // 기상청 지원 base 시간
+        let baseHour = 23; // 기본값 (가장 늦은 시간)
+
+        for (let i = 0; i < times.length; i++) {
+          if (hour < times[i]) {
+            baseHour = times[i - 1] ?? 23; // 제일 이른 시간 전이면 23시 (전날)
+            break;
+          }
+        }
+
+        return String(baseHour).padStart(2, "0") + "00";
+      }
+
+      // 날씨 정도 가져오는 함수
+      function getWeather(nx, ny) {
+        console.log("지금 나의 위치 :: " + nx + ny);
+
+        // 오늘 날짜와 적절한 base_time 계산
+        const base_date = new Date()
+          .toISOString()
+          .slice(0, 10)
+          .replace(/-/g, "");
+        const base_time = getBaseTime(); //3시간 단위 (0500, 0800 ...)
+
+        console.log("기준시간 ::: " + base_time);
+
+        // 날씨 API 에서 인코딩된 키 사용
+        const serviceKey =
+          "B%2FPWusMdlDVh0QO2vrTiYOKte6sWDCN5MD9FQR5LPquOyR53Usl%2F%2Fb%2FN3zToN%2BFGYDl2lY6BJos%2F7NOVbWD%2ByA%3D%3D";
+
+        const url = `https://apis.data.go.kr/1360000/VilageFcstInfoService_2.0/getVilageFcst?serviceKey=${serviceKey}&pageNo=1&numOfRows=1000&dataType=JSON&base_date=${base_date}&base_time=${base_time}&nx=${nx}&ny=${ny}`;
+
+        console.log(url);
+
+        const weatherinfo = document.getElementById("header_whether");
+        fetch(url)
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("네트워크 응답에 문제가 있습니다.");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            const items = data.response.body.items.item;
+
+            // 예보 시간 기준으로 정렬 (선택 사항)
+            const forecast = {};
+
+            items.forEach((item) => {
+              const time = item.fcstTime;
+              if (!forecast[time]) forecast[time] = {};
+
+              if (item.category === "TMP") {
+                forecast[time].temp = item.fcstValue;
+              } else if (item.category === "SKY") {
+                forecast[time].sky = item.fcstValue;
+              } else if (item.category === "PTY") {
+                forecast[time].pty = item.fcstValue;
+              }
+            });
+
+            // 상태 매핑 (FontAwesome 아이콘 사용)
+            const skyMap = {
+              1: "fas fa-sun", // 맑음
+              3: "fas fa-cloud-sun", // 흐림
+              4: "fa-solid fa-smog", // 구름
+            };
+            const ptyMap = {
+              0: "없음",
+              1: "fa-solid fa-umbrella", // 비
+              2: "fa-solid fa-cloud-meatball", // 비/눈
+              3: "fa-solid fa-snowflake", // 눈
+              4: "fa-solid fa-cloud-showers-heavy", // 소나기
+              5: "fa-solid fa-cloud-rain", // 비
+              6: "fa-solid fa-cloud-meatball", // 함박눈
+              7: "fa-solid fa-cloud-meatball", // 함박눈
+            };
+
+            // 시간 정보
+            const forecastTimes = Object.keys(forecast);
+
+            // 전체 예보 시간 중 첫 번째 항목만 선택
+            if (forecastTimes.length > 0) {
+              const selectedTime = forecastTimes[0];
+              const tmp = forecast[selectedTime].temp;
+
+              let status = null;
+
+              if (forecast[selectedTime].pty == 0) {
+                status = skyMap[forecast[selectedTime].sky];
+              } else {
+                status = ptyMap[forecast[selectedTime].pty];
+              }
+
+              console.log(`[${selectedTime}] 기온: ${tmp}°C / 상태: ${status}`);
+              let whetherTag = `<i class="${status}"></i> &nbsp; ${tmp}°C`;
+              weatherinfo.innerHTML = whetherTag;
+            } else {
+              console.log("예보 정보가 없습니다.");
+            }
+          })
+          .catch((error) => {
+            console.error("날씨 정보를 가져오는 데 실패했습니다:", error);
+          });
+      }
+
+      // 버튼1 애니메이션
+      const savebtn = document.getElementById("savebtn");
+
+      const originalText = `<i class="fa-solid fa-user-plus"></i>`;
+      const hoverText = "멤버추가";
+
+      savebtn.addEventListener("mouseover", () => {
+        savebtn.innerHTML = hoverText;
+      });
+
+      savebtn.addEventListener("mouseout", () => {
+        savebtn.innerHTML = originalText;
+      });
+
+      // 버튼2 애니메이션
+      const selectbtn = document.getElementById("selectbtn");
+
+      const originalText2 = `<i class="fa-solid fa-people-group"></i>`;
+      const hoverText2 = "멤버조회";
+
+      selectbtn.addEventListener("mouseover", () => {
+        selectbtn.innerHTML = hoverText2;
+      });
+
+      selectbtn.addEventListener("mouseout", () => {
+        selectbtn.innerHTML = originalText2;
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="header-line">
+      <div class="heaer-logo">
+        <span><i class="fa-solid fa-2"></i></span>
+        <span>GETHER</span>
+      </div>
+      <div class="header-etc">
+        <span id="header_whether">날이 적당해요...</span>
+        <span id="header_count">방문자 수 : </span>
+      </div>
     </div>
-    <div class="header-etc">
-      <span id="header_whether">날이 적당해요...</span>
-      <span id="header_count">방문자 수 : </span>
+    <div class="main">
+      <div class="main-words">
+        <h1 class="display-2 fw-bold"><i class="fa-solid fa-2"></i>GETHER</h1>
+        <p class="fs-4 mx-auto">
+          공부도 과제도 고민도 함께하는 2조 2Gether입니다.
+        </p>
+        <p class="fs-5 mx-auto">
+          각기 다른 개성과 능력을 가진 팀원들이 하나의 목표를 향해 나아간다는
+          의미를 담고 있습니다.
+        </p>
+      </div>
+      <div class="main-btn-box">
+        <button id="savebtn" type="button">
+          <i class="fa-solid fa-user-plus"></i>
+        </button>
+        <button id="selectbtn" type="button">
+          <i class="fa-solid fa-people-group"></i>
+        </button>
+      </div>
     </div>
-  </div>
-  <div class="main">
-    <div class="main-words">
-      <h1 class="display-2 fw-bold"><i class="fa-solid fa-2"></i>GETHER</h1>
-      <p class="fs-4 mx-auto">공부도 과제도 고민도 함께하는 2조 2Gether입니다. </p>
-      <p class="fs-5 mx-auto">각기 다른 개성과 능력을 가진 팀원들이 하나의 목표를 향해 나아간다는 의미를 담고 있습니다.</p>
-    </div>
-    <div class="main-btn-box">
-      <button id="savebtn" type="button"><i class="fa-solid fa-user-plus"></i></button>
-      <button id="selectbtn" type="button"><i class="fa-solid fa-people-group"></i></button>
-    </div>
-  </div>
 
   <!-- 팀원 추가 -->
   <div class="mypostingbox" id="postingbox" style="display: none;">
@@ -956,12 +1059,17 @@
     </button>
   </div>
 
-  <!-- 팀원 조회 -->
-  <div id="profile" style="display: none">
-  </div>
+    <!-- 팀원 조회 -->
+    <div class="swiper mySwiper mt-3">
+      <div class="swiper-wrapper" id="profile"  style="display: none"></div>
 
-  <div class="guestbook-container">
-    <div class="guestbook-title">방명록</div>
+      <!-- 슬라이드 화살표 -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+    </div>
+
+    <div class="guestbook-container">
+      <div class="guestbook-title">방명록</div>
 
     <div class="form-group">
       <label for="guestName">이름</label>
@@ -975,18 +1083,16 @@
       <div class="btn-submit" id="guestSubmit">등록하기</div>
     </div>
     <hr>
-    <p>방명록 수: <span id="message">?</span></p>
+    <div class = "count">
+      <p>방명록 수: <span id="message">?</span></p>
+    </div>
     <div id="guestList" style="margin-top: 30px;"></div>
 
-    <div class="pagination-location">
-      <nav aria-label="Page navigation example">
-        <ul class="pagination">
-        </ul>
-      </nav>
+      <div class="pagination-location">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination"></ul>
+        </nav>
+      </div>
     </div>
-
-
-  </div>
-</body>
-
+  </body>
 </html>
