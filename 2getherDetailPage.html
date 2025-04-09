@@ -2,217 +2,219 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>상세페이지</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
-        crossorigin="anonymous"></script>
-    <style>
-        body {
-            font-family: 'Noto Sans KR', sans-serif;
-            font-weight: 700 !important;
-            font-style: normal !important;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>상세페이지</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700 !important;
+      font-style: normal !important;
+    }
 
-        .detail-body {
-            background-color: ivory;
-        }
+    .detail-body {
+      background-color: ivory;
+    }
 
-        .detail-body .profile-box {
-            border: 1px solid black;
-            padding: 15px;
-            border-radius: 10px;
-        }
+    .detail-body .profile-box {
+      border: 1px solid black;
+      padding: 15px;
+      border-radius: 10px;
+    }
 
-        .detail-body .profile-box .wrapper {
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            padding: 30px;
-            gap: 20px;
-            align-items: stretch;
-        }
+    .detail-body .profile-box .wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      padding: 30px;
+      gap: 20px;
+      align-items: stretch;
+    }
 
-        .wrapper .profile-section {
-            display: flex;
-            margin: 20px 0;
-            gap: 20px;
-        }
+    .wrapper .profile-section {
+      display: flex;
+      margin: 20px 0;
+      gap: 20px;
+    }
 
-        .wrapper .text-section {
-            padding-top: 20px;
-        }
+    .wrapper .text-section {
+      padding-top: 20px;
+    }
 
-        .wrapper .profile-section .profile-img-box {
-            width: 150px;
-            height: 150px;
-            display: flex;
-            margin-right: 20px;
-            border: 1px solid white;
-            border-radius: 10px;
-        }
+    .wrapper .profile-section .profile-img-box {
+      width: 150px;
+      height: 150px;
+      display: flex;
+      margin-right: 20px;
+      border: 1px solid white;
+      border-radius: 10px;
+    }
 
-        .wrapper .profile-section .profile-img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 10px;
-        }
+    .wrapper .profile-section .profile-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
 
-        .profile-info .info {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 8px 20px;
-            font-size: 16px;
-            word-break: break-word;
-            /*긴 텍스트 줄바꿈 처리*/
-        }
-
-
-        .profile-info .input-list {
-            font-weight: bold;
-        }
-
-        /*병아리 크기 감소 */
-        .chick {
-            font-size: 20px;
-        }
-
-        /*병아리 후버 추가 */
-        .chick {
-            display: inline-block;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .chick:hover {
-            transform: rotate(15deg) scale(1.2);
-        }
-
-        /* 주석 사이를 복사*/
-        #detail-title {
-            text-align: center;
-            font-size: 20px;
-        }
+    .profile-info .info {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 8px 20px;
+      font-size: 16px;
+      word-break: break-word;
+      /*긴 텍스트 줄바꿈 처리*/
+    }
 
 
-        /* 댓글 섹션*/
+    .profile-info .input-list {
+      font-weight: bold;
+    }
 
-        /* 댓글 섹션 스타일 */
-        .container {
-            background-color: white;
-        }
+    /*병아리 크기 감소 */
+    .chick {
+      font-size: 20px;
+    }
 
-        .card {
-            font-family: 'Noto Sans KR', sans-serif;
-            font-weight: 700 !important;
-            font-style: normal;
-            /* 명시적으로 지정 */
-            border: 1px solid black !important;
-            /* Bootstrap 기본 테두리 덮어쓰기 */
-            border-radius: 10px;
-            padding: 20px;
-            /* 프로필과 패딩 맞춤 */
-            background-color: ivory !important;
-            /* 배경색 설정 */
-            color: black;
-            margin: 0 auto;
-            /* 중앙 정렬 */
-            width: 100%;
-            /* 컨테이너 내에서 꽉 채움 */
-            max-width: 100%;
-            /* 컨테이너 너비 초과 방지 */
-        }
+    /*병아리 후버 추가 */
+    .chick {
+      display: inline-block;
+      transition: transform 0.3s ease-in-out;
+    }
 
-        .form-group {
-            width: 100%;
-            margin-bottom: 10px;
-        }
+    .chick:hover {
+      transform: rotate(15deg) scale(1.2);
+    }
 
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: black;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #444;
-            background-color: white;
-            color: black;
-            border-radius: 5px;
-        }
-
-        .btn-location {
-            width: 100%;
-            display: flex;
-            justify-content: flex-end;
-        }
-
-        .btn-submit {
-            width: 100px;
-            padding: 12px;
-            border: 1px solid white;
-            background-color: rgb(123, 89, 45);
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .btn-submit:hover {
-            background-color: black;
-            color: white;
-        }
-
-        .commentBox {
-            background-color: white;
-            width: 100%;
-            margin-top: 40px;
-            border: 1px solid rgb(171, 171, 171);
-            border-radius: 5px;
-            padding: 15px;
-        }
-
-        .time {
-            font-size: small;
-            color: gray;
-        }
-
-        .pagination {
-            margin-top: 5%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .page-link {
-            color: rgb(123, 89, 45);
-        }
-
-        .comment-submit {
-            #submitBtn {
-                background-color: rgb(123, 89, 45);
-                color: white;
-                border: none;
-                padding: 10px 20px;
-                font-size: 16px;
-                cursor: pointer;
-                border-radius: 5px;
-            }
-
-        }
+    /* 주석 사이를 복사*/
+    #detail-title {
+      text-align: center;
+      font-size: 20px;
+    }
 
 
+    /* 댓글 섹션*/
 
-        /* .commentBox {
+    /* 댓글 섹션 스타일 */
+    .container {
+      background-color: white;
+    }
+
+    .card {
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 700 !important;
+      font-style: normal;
+      /* 명시적으로 지정 */
+      border: 1px solid black !important;
+      /* Bootstrap 기본 테두리 덮어쓰기 */
+      border-radius: 10px;
+      padding: 20px;
+      /* 프로필과 패딩 맞춤 */
+      background-color: ivory !important;
+      /* 배경색 설정 */
+      color: black;
+      margin: 0 auto;
+      /* 중앙 정렬 */
+      width: 100%;
+      /* 컨테이너 내에서 꽉 채움 */
+      max-width: 100%;
+      /* 컨테이너 너비 초과 방지 */
+    }
+
+    .form-group {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: black;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #444;
+      background-color: white;
+      color: black;
+      border-radius: 5px;
+    }
+
+    .btn-location {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .btn-submit {
+      width: 100px;
+      padding: 12px;
+      border: 1px solid white;
+      background-color: rgb(123, 89, 45);
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-submit:hover {
+      background-color: black;
+      color: white;
+    }
+
+    .commentBox {
+      background-color: white;
+      width: 100%;
+      margin-top: 40px;
+      border: 1px solid rgb(171, 171, 171);
+      border-radius: 5px;
+      padding: 15px;
+    }
+
+    .time {
+      font-size: small;
+      color: gray;
+    }
+
+    .pagination {
+      margin-top: 5%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .page-link {
+      color: rgb(123, 89, 45);
+    }
+
+    .comment-submit {
+      #submitBtn {
+        background-color: rgb(123, 89, 45);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+      }
+
+    }
+
+
+
+    /* .commentBox {
                 background-color: white;
                 width: 100%;
                 margin-top: 40px;
@@ -232,210 +234,224 @@
                 display: flex;
                 justify-content: center;
             } */
-        .floating-chick {
-            position: fixed;
-            bottom: 20px;
-            /* 하단 여백 */
-            right: 20px;
-            /* 우측 여백 */
-            width: 120px;
-            z-index: 9999;
-            /* 다른 요소보다 위에 오도록 */
-            pointer-events: auto;
-            /* 클릭 방해하지 않도록 */
-            opacity: 0.95;
-            transition: transform 0.3s ease;
-        }
+    .floating-chick {
+      position: fixed;
+      bottom: 20px;
+      /* 하단 여백 */
+      right: 20px;
+      /* 우측 여백 */
+      width: 120px;
+      z-index: 9999;
+      /* 다른 요소보다 위에 오도록 */
+      pointer-events: auto;
+      /* 클릭 방해하지 않도록 */
+      opacity: 0.95;
+      transition: transform 0.3s ease;
+    }
 
-        /* 호버 시 살짝 커짐짐 */
-        .floating-chick:hover {
-            transform: scale(1.2);
-        }
-    </style>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>댓글</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    /* 호버 시 살짝 커짐짐 */
+    .floating-chick:hover {
+      transform: scale(1.2);
+    }
+  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>댓글</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
-    <script type="module">
-        // Firebase SDK 라이브러리 가져오기
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
-        import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
-        import { serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"; // serverTimestamp import 추가
-
-
-        // Firebase 구성 정보 설정
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-        const firebaseConfig = {
-            apiKey: "AIzaSyCVPjHmumz5vE8GeGMFX9Z1Kgkc6Br9tpM",
-            authDomain: "sparta-ec005.firebaseapp.com",
-            projectId: "sparta-ec005",
-            storageBucket: "sparta-ec005.firebasestorage.app",
-            messagingSenderId: "164807435795",
-            appId: "1:164807435795:web:cf27e6ffe27d5bc05901e6"
-        };
+  <script type="module">
+    // Firebase SDK 라이브러리 가져오기
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { getDocs } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { query, where } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+    import { serverTimestamp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js"; // serverTimestamp import 추가
 
 
-        // Firebase 인스턴스 초기화
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
+    // Firebase 구성 정보 설정
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCVPjHmumz5vE8GeGMFX9Z1Kgkc6Br9tpM",
+      authDomain: "sparta-ec005.firebaseapp.com",
+      projectId: "sparta-ec005",
+      storageBucket: "sparta-ec005.firebasestorage.app",
+      messagingSenderId: "164807435795",
+      appId: "1:164807435795:web:cf27e6ffe27d5bc05901e6"
+    };
 
-        // URL에서 name 파라미터 가져오기
-        const urlParams = new URLSearchParams(window.location.search);
-        const idParam = urlParams.get("id");
 
-        async function getMemberDetail(id) {
-            const docRef = doc(db, "Intro", id);
-            const docSnap = await getDoc(docRef);
+    // Firebase 인스턴스 초기화
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
 
-            if (docSnap.exists()) {
-                const data = docSnap.data();
+    // URL에서 name 파라미터 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.get("id");
 
-                // 데이터 바인딩
-                document.querySelector(".profile-img-box img").src = data.image;
-                document.getElementById("name").innerText = data.name;
-                const nowAge = new Date().getFullYear() - new Date(data.birth).getFullYear();
-                document.getElementById("age").innerText = nowAge;
-                document.getElementById("hobby").innerText = data.hobby;
-                document.getElementById("blogLink").innerText = data.blogLink;
-                document.getElementById("introText").innerText = data.intro;
-                document.getElementById("tmiText").innerText = data.tmi;
+    async function getMemberDetail(id) {
+      const docRef = doc(db, "Intro", id);
+      const docSnap = await getDoc(docRef);
 
-            } else {
-                alert("해당 팀원 정보를 찾을 수 없습니다.");
-            }
-        }
+      if (docSnap.exists()) {
+        const data = docSnap.data();
 
-        getMemberDetail(idParam);
+        // 데이터 바인딩
+        document.querySelector(".profile-img-box img").src = data.image;
+        document.getElementById("name").innerText = data.name;
+        const nowAge = new Date().getFullYear() - new Date(data.birth).getFullYear();
+        document.getElementById("age").innerText = nowAge;
+        document.getElementById("hobby").innerText = data.hobby;
+        document.getElementById("blogLink").innerText = data.blogLink;
+        document.getElementById("introText").innerText = data.intro;
+        document.getElementById("tmiText").innerText = data.tmi;
 
-        //댓글 등록 가능
-        let commentsData = []
-        let pageNumber = 1;
+      } else {
+        alert("해당 팀원 정보를 찾을 수 없습니다.");
+      }
+    }
 
-        //버튼 클릭 시
-        $("#comment-submit").click(async function () {
-            let userId = $('#user-id').val();
-            let comment = $('#comment-content').val();
+    getMemberDetail(idParam);
 
-            if (userId.trim() === "" || comment.trim() === "") {
-                alert("아이디와 댓글을 모두 입력해주세요.");
-                return;
-            }
+    //댓글 등록 가능
+    let commentsData = []
+    let pageNumber = 1;
 
-            let doc = {
-                userId: userId,
-                comment: comment,
-                memberId : idParam,
-                timestamp: serverTimestamp()
-            };
+    //버튼 클릭 시
+    $("#comment-submit").click(async function () {
+      let userId = $('#user-id').val();
+      let comment = $('#comment-content').val();
 
-            // Firebase에 댓글 저장
-            await addDoc(collection(db, "comments"), doc);
-            alert("댓글이 저장되었습니다!");
-            $('#user-id').val("");
-            $('#comment-content').val("");
-
-            // 댓글 다시 불러오기
-            getCommentsCount();
-            getComments();
+      if (userId.trim() === "" || comment.trim() === "") {
+        Swal.fire({
+          title: "입력값이 이상해요",
+          text: "이름과 내용을 똑바로좀 적어주세요",
+          icon: "warning"
         });
+        return;
+      }
 
-        // 방명록 개수
-        async function getCommentsCount() {
-            const querySnapshot = await getDocs(query(collection(db, "comments"), where("memberId", "==", idParam)));
-            const count = querySnapshot.size;  // 컬렉션의 문서 수를 가져옴
-            $("#message").text(count);  // 방명록 수 표시
+      let doc = {
+        userId: userId,
+        comment: comment,
+        memberId: idParam,
+        timestamp: serverTimestamp()
+      };
+
+      await Swal.fire({
+        title: "저장할래요?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonText: "저장해요",
+        cancelButtonText: "다시할래요"
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          // Firebase에 댓글 저장
+          await addDoc(collection(db, "comments"), doc);
+          Swal.fire("저장했어요!", "", "success");
+          $('#user-id').val("");
+          $('#comment-content').val("");
+
+          // 댓글 다시 불러오기
+          getCommentsCount();
+          getComments();
         }
+      });
+    });
 
-        // 댓글 데베에서 로드
-        async function getComments() {
-            const querySnapshot = await getDocs(query(collection(db, "comments"), where("memberId", "==", idParam)));
-            commentsData = []
+    // 방명록 개수
+    async function getCommentsCount() {
+      const querySnapshot = await getDocs(query(collection(db, "comments"), where("memberId", "==", idParam)));
+      const count = querySnapshot.size;  // 컬렉션의 문서 수를 가져옴
+      $("#message").text(count);  // 방명록 수 표시
+    }
 
-            querySnapshot.forEach((doc) => {
-                let data = doc.data();
-                commentsData.push({
-                    ...data,
-                    id: doc.id
-                });
-            });
+    // 댓글 데베에서 로드
+    async function getComments() {
+      const querySnapshot = await getDocs(query(collection(db, "comments"), where("memberId", "==", idParam)));
+      commentsData = []
 
-            //시간 순 내림차순
-            commentsData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);
+      querySnapshot.forEach((doc) => {
+        let data = doc.data();
+        commentsData.push({
+          ...data,
+          id: doc.id
+        });
+      });
 
-            displayCommentsData();
-            pagination_add();
-        }
+      //시간 순 내림차순
+      commentsData.sort((a, b) => b.timestamp.seconds - a.timestamp.seconds);
 
-        // 방명록 출력
-        function displayCommentsData() {
-            let commentsList = commentsData.slice((pageNumber - 1) * 5, pageNumber * 5);
-            $("#commentsList .commentBox").remove();// 기존의 방명록 없애기_다시 출력할꺼니까
+      displayCommentsData();
+      pagination_add();
+    }
 
-            let html = "";
-            commentsList.forEach((data) => {
-                html += `
+    // 방명록 출력
+    function displayCommentsData() {
+      let commentsList = commentsData.slice((pageNumber - 1) * 5, pageNumber * 5);
+      $("#commentsList .commentBox").remove();// 기존의 방명록 없애기_다시 출력할꺼니까
+
+      let html = "";
+      commentsList.forEach((data) => {
+        html += `
                 <div class = "commentBox">
                         <strong>${data.userId}</strong><br/>
                         <p>${data.comment}</p>
                         <p class="time">${data.timestamp.toDate().toLocaleString()}</p>
                 </div>
                 `;
-            });
-            $("#commentsList").append(html);
-        }
+      });
+      $("#commentsList").append(html);
+    }
 
 
-        // 페이지네이션 추가
-        function pagination_add() {
+    // 페이지네이션 추가
+    function pagination_add() {
 
-            const pages = Math.ceil(commentsData.length / 5);
-            let html = "";
+      const pages = Math.ceil(commentsData.length / 5);
+      let html = "";
 
-            // 페이지네이션 버튼 추가
-            for (let i = 0; i < pages; i++) {
-                html += `
+      // 페이지네이션 버튼 추가
+      for (let i = 0; i < pages; i++) {
+        html += `
                       <li class="page-item">
                           <a class="page-link" href="#">${i + 1}</a>
                       </li>
                   `;
-            }
+      }
 
-            $(".pagination").html(html);  // 페이지네이션을 추가
-        }
+      $(".pagination").html(html);  // 페이지네이션을 추가
+    }
 
-        // 페이지네이션 버튼 클릭, 방명록 출력
-        $(document).on('click', '.page-link', function (event) {
-            event.preventDefault();
-            console.log("ㅎㅎ");
-            pageNumber = parseInt($(this).text());  // 클릭한 페이지 번호
-            displayCommentsData();  // 해당 페이지의 방명록 출력
-        });
+    // 페이지네이션 버튼 클릭, 방명록 출력
+    $(document).on('click', '.page-link', function (event) {
+      event.preventDefault();
+      console.log("ㅎㅎ");
+      pageNumber = parseInt($(this).text());  // 클릭한 페이지 번호
+      displayCommentsData();  // 해당 페이지의 방명록 출력
+    });
 
-        $(document).ready(function () {
-            // 데베 로드
-            getComments();
-            getCommentsCount();
-        }); 
-    </script>
+    $(document).ready(function () {
+      // 데베 로드
+      getComments();
+      getCommentsCount();
+    }); 
+  </script>
 </head>
 
 <body>
-    <div class="container mt-3 mb-3">
-        <div class="detail-body">
-            <div class="profile-box">
-                <p id="detail-title" style="font-size: 30px;">🐣2gether Member🐣</p>
-                <hr>
-                <div class="wrapper">
-                    <div class="profile-section">
-                        <div>
-                            <dd id="introText" class="input-list" style="
+  <div class="container mt-3 mb-3">
+    <div class="detail-body">
+      <div class="profile-box">
+        <p id="detail-title" style="font-size: 30px;">🐣2gether Member🐣</p>
+        <hr>
+        <div class="wrapper">
+          <div class="profile-section">
+            <div>
+              <dd id="introText" class="input-list" style="
                             position: absolute;
                             top: 115px; /* 원하는 위치 조절 */
                             left: 50%;
@@ -444,74 +460,73 @@
                             width: 100%;
                             z-index: 10;
                             font-size: 20px;"></dd>
-                        </div>
-                        <div class="profile-img-box">
-                            <img src="default-image" />
-                        </div>
-                        <div class="profile-info">
-                            <dl class="info">
-                                <dt>이름 : </dt>
-                                <dd id="name" class="input-list"></dd>
-                                <dt>생년월일 : </dt>
-                                <dd id="age" class="input-list"></dd>
-                                <dt>취미 : </dt>
-                                <dd id="hobby" class="input-list"></dd>
-                                <dt>블로그 링크 : </dt>
-                                <dd id="blogLink" class="input-list"></dd>
-                                <dt>TMI : </dt>
-                                <dd id="tmiText" class="input-list"></dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
             </div>
+            <div class="profile-img-box">
+              <img src="default-image" />
+            </div>
+            <div class="profile-info">
+              <dl class="info">
+                <dt>이름 : </dt>
+                <dd id="name" class="input-list"></dd>
+                <dt>생년월일 : </dt>
+                <dd id="age" class="input-list"></dd>
+                <dt>취미 : </dt>
+                <dd id="hobby" class="input-list"></dd>
+                <dt>블로그 링크 : </dt>
+                <dd id="blogLink" class="input-list"></dd>
+                <dt>TMI : </dt>
+                <dd id="tmiText" class="input-list"></dd>
+              </dl>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="container">
-        <div class="card">
-            <h5 class="card-header">댓글</h5>
-            <div class="card-body">
-                <div class="form-floating mb-3" style="max-width: 800px;">
+  <div class="container">
+    <div class="card">
+      <h5 class="card-header">댓글</h5>
+      <div class="card-body">
+        <div class="form-floating mb-3" style="max-width: 800px;">
 
 
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="user-id" placeholder="아이디">
-                        <label for="user-id">아이디</label>
-                    </div>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="user-id" placeholder="아이디">
+            <label for="user-id">아이디</label>
+          </div>
 
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="comment-content" placeholder="댓글"
-                            style="height: 100px;"></input>
-                        <label for="comment-content">댓글</label>
-                    </div>
-                    <div class="btn-location"><button id="comment-submit" type="button" class="btn-submit">등록하기</button>
-                    </div>
-                </div>
-                <hr>
-                <p>댓글 수: <span id="message">0</span></p>
-                <div id="commentsList" style="margin-top: 30px;"></div>
-            </div>
-            <div class="pagination-location">
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                    </ul>
-                </nav>
-            </div>
+          <div class="form-floating mb-3">
+            <input class="form-control" id="comment-content" placeholder="댓글" style="height: 100px;"></input>
+            <label for="comment-content">댓글</label>
+          </div>
+          <div class="btn-location"><button id="comment-submit" type="button" class="btn-submit">등록하기</button>
+          </div>
         </div>
+        <hr>
+        <p>댓글 수: <span id="message">0</span></p>
+        <div id="commentsList" style="margin-top: 30px;"></div>
+      </div>
+      <div class="pagination-location">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+          </ul>
+        </nav>
+      </div>
     </div>
+  </div>
 
-    <!-- 병아리 이미지 우측 하단 고정 -->
-    <a href="main.html">
-        <img id="chickBtn" src="chickTogether.png" alt="투게더 병아리" class="floating-chick">
-    </a>
-    <script>
-        $(document).ready(function () {
-            $("#chickBtn").click(function () {
-                window.location.href = "index.html";
-            });
-        });
-    </script>
+  <!-- 병아리 이미지 우측 하단 고정 -->
+  <a href="main.html">
+    <img id="chickBtn" src="images/chickTogether.png" alt="투게더 병아리" class="floating-chick">
+  </a>
+  <script>
+    $(document).ready(function () {
+      $("#chickBtn").click(function () {
+        window.location.href = "index.html";
+      });
+    });
+  </script>
 
 </body>
 
