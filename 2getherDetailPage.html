@@ -155,7 +155,7 @@
                 // 데이터 바인딩
                 document.querySelector(".profile-img-box img").src = data.image;
                 document.getElementById("name").innerText = data.name;
-                document.getElementById("age").innerText = data.age;
+                document.getElementById("birth").innerText = data.birth;
                 document.getElementById("hobby").innerText = data.hobby;
                 document.getElementById("blogLink").innerText = data.blogLink;
                 document.getElementById("introText").innerText = data.intro;
@@ -181,9 +181,8 @@
                 alert("아이디와 댓글을 모두 입력해주세요.");
                 return;
             }
-            
+
             let doc = {
-                memberId: idParam,
                 userId: userId,
                 comment: comment,
                 timestamp: serverTimestamp()
@@ -194,8 +193,6 @@
             alert("댓글이 저장되었습니다!");
             $('#user-id').val("");
             $('#comment-content').val("");
-            console.log(idParam);
-
 
             // 댓글 다시 불러오기
             getCommentsCount();
@@ -298,8 +295,8 @@
                             <dl class="info">
                                 <dt>이름 : </dt>
                                 <dd id="name" class="input-list"></dd>
-                                <dt>나이 : </dt>
-                                <dd id="age" class="input-list"></dd>
+                                <dt>생년월일 : </dt>
+                                <dd id="birth" class="input-list"></dd>
                                 <dt>취미 : </dt>
                                 <dd id="hobby" class="input-list"></dd>
                                 <dt>블로그 링크 : </dt>
