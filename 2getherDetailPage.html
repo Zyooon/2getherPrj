@@ -29,6 +29,8 @@
 
   <!--파비콘-->
   <link rel="icon" href="images/number2.png" type="image/png" />
+  <!--폰트어썸-->
+  <script src="https://kit.fontawesome.com/2fb2def76d.js" crossorigin="anonymous"></script>
   <style>
     /* 스크롤바 */
     ::-webkit-scrollbar {
@@ -63,7 +65,22 @@
       background-color: #fffaf0 !important;
     }
 
-    
+    .header-line {
+      font-family: "Quicksand", sans-serif;
+      color: rgb(231, 158, 0);
+      font-weight: 700;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: space-around;
+    }
+
+    .heaer-logo>span {
+      font-optical-sizing: auto;
+      font-style: normal;
+      font-size: x-large;
+    }
 
     .detail-body {
       font-weight: 700 !important;
@@ -187,7 +204,7 @@
     .card-body .reply-count{
       color: rgb(123, 89, 45);
     }
-    
+
 
     .form-group {
       width: 90%;
@@ -308,7 +325,7 @@
             } */
     .group-chick {
       position: fixed;
-      bottom: 20px;
+      bottom: 60px;
       /* 하단 여백 */
       right: 20px;
       /* 우측 여백 */
@@ -324,6 +341,20 @@
     /* 호버 시 살짝 커짐짐 */
     .group-chick:hover {
       transform: scale(1.2);
+    }
+
+    footer {
+      position: relative;
+      width: auto;
+      height: 55px;
+      bottom: 0%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #7b5b3e;
+      font-size: 13px;
+      border-top: 1px solid #7b5b3e;
+      margin-top: 50px;
     }
   </style>
   <meta charset="UTF-8" />
@@ -529,6 +560,12 @@
 </head>
 
 <body>
+  <div class="header-line">
+    <div class="heaer-logo" onclick="location.href='main.html'" style="cursor: pointer;">
+      <span><i class="fa-solid fa-2"></i></span>
+      <span>GETHER</span>
+    </div>
+  </div>
   <div class="container mt-3 mb-3">
     <div class="detail-body">
       <div class="profile-box">
@@ -539,7 +576,7 @@
             <div>
               <dd id="introText" class="input-list" style="
                             position: absolute;
-                            top: 115px; /* 원하는 위치 조절 */
+                            top: 170px; /* 원하는 위치 조절 */
                             left: 50%;
                             transform: translateX(-50%);
                             text-align: center;
@@ -606,6 +643,12 @@
 
     </div>
   </div>
+  <footer>
+    <span>
+      Company Info | Terms of Service | Privacy Policy | CS | Business Registration Number 123-12-12345 | CEO Earth |
+      161 Sajik-ro, Jongno-gu, Seoul, Republic of Korea | Tel 0505-1212-3434
+    </span>
+  </footer>
 
   <!-- 병아리 이미지 우측 하단 고정 -->
   <a href="main.html">

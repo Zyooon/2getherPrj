@@ -46,6 +46,45 @@
       body {
         background-color: ivory;
       }
+      <!--AJAX-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--폰트어썸-->
+  <script src="https://kit.fontawesome.com/2fb2def76d.js" crossorigin="anonymous"></script>
+  <!--부트스트랩-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+  <!--폰트-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet" />
+  <!--파비콘-->
+  <link rel="icon" href="images/number2.png" type="image/png" />
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.all.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.17.2/dist/sweetalert2.min.css" rel="stylesheet">
+  <style>
+    body {
+        background-color: ivory;
+      }
+
+      .bold-style {
+        font-weight: bold;
+      }
+
+      .highlight {
+        position: relative;
+      }
+
+      .highlight:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background-color: #fff20071;
+        z-index: -1;
+      }
 
       /* 스크롤바 */
       ::-webkit-scrollbar {
@@ -557,6 +596,19 @@
       .us-content p {
         margin: 5px;
       }
+
+      footer {
+        position: relative;
+        width: auto;
+        height: 55px;
+        bottom: 0%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #7b5b3e;
+        font-size: 13px;
+        border-top: 1px solid #7b5b3e;
+      }
     </style>
 
     <script type="module">
@@ -904,7 +956,7 @@
       setInterval(() => {
         // 일정 시간마다 실행할 함수
         updateVisitorCount(); // 방문자 수 증가 로직
-      }, 1000 * 30); // n초마다 실행
+      }, 1000 * 10); // n초마다 실행
 
       // 방문자 수 올라갈때 애니메이션 추가
       function animateCountUp(element, start, end, duration = 2000) {
@@ -1204,8 +1256,8 @@
           공부도 과제도 고민도 함께하는 2조 2Gether입니다.
         </p>
         <p class="fs-5 mx-auto">
-          각기 다른 개성과 능력을 가진 팀원들이 하나의 목표를 향해 나아간다는
-          의미를 담고 있습니다.
+          각기 다른 개성과 능력을 가진 팀원들이 하나의 목표를 향해 함께
+          나아간다는 의미를 담고 있습니다.
         </p>
       </div>
       <div class="main-btn-box">
@@ -1310,17 +1362,36 @@
       <article class="art2">
         <div class="us-title"><i class="fa-solid fa-2"></i> GETHER</div>
         <div class="us-content">
-          <p>여기에는</p>
-          <p>우리에대한</p>
-          <p>내용을적어요</p>
+          <!--
+        <p>여기에는</p>
+        <p>우리에대한</p>
+        <p>내용을적어요</p>
+        -->
+          <p>
+            저희...이제 막 병아리가 됐는데<br />
+            뭘 해야하죠? 웹페이지 만들어야죠.<br />
+            생존하기 위해 6명이 모였습니다.<br />
+            6마리의 병아리 모임<br />
+            팀 <span class="bold-style">2gether</span>입니다.<br />
+          </p>
         </div>
       </article>
       <article class="art3">
         <div class="us-title">팀 규칙</div>
         <div class="us-content">
-          <p>여기에는</p>
-          <p>우리의</p>
-          <p>규칙을적어요</p>
+          <!--        
+        <p>여기에는</p>
+        <p>우리의</p>
+        <p>규칙을적어요</p>
+        -->
+          <p>
+            <span class="bold-style">1. </span
+            ><span class="highlight">시간 약속을</span> 엄수해요<br /><br />
+            <span class="bold-style">2. </span
+            ><span class="highlight">부드러운 표현을</span> 사용해요<br /><br />
+            <span class="bold-style">3. </span
+            ><span class="highlight">적극적으로</span> 참여해요<br />
+          </p>
         </div>
       </article>
       <article class="art4">
@@ -1332,9 +1403,19 @@
       <article class="art6">
         <div class="us-title">우리 시간표</div>
         <div class="us-content">
-          <p>여기에는</p>
-          <p>우리가 시간을</p>
-          <p>보내는 방법을 적어요</p>
+          <!--
+        <p>여기에는</p>
+        <p>우리가 시간을</p>
+        <p>보내는 방법을 적어요</p>
+        -->
+          <p>
+            09:00 ~ 12:00: 파트 작업<br />
+            12:00 ~ 13:00: 점심 시간<br />
+            13:00 ~ 18:00: 병합, 수정<br />
+            18:00 ~ 19:00: 저녁 시간<br />
+            19:00 ~ 20:00: 최종 점검<br />
+            20:00 ~ 21:00: TIL 작성<br />
+          </p>
         </div>
       </article>
     </div>
@@ -1369,5 +1450,12 @@
         </nav>
       </div>
     </div>
+    <footer>
+      <span>
+        Company Info | Terms of Service | Privacy Policy | CS | Business
+        Registration Number 123-12-12345 | CEO Earth | 161 Sajik-ro, Jongno-gu,
+        Seoul, Republic of Korea | Tel 0505-1212-3434
+      </span>
+    </footer>
   </body>
 </html>
