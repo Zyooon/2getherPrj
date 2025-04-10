@@ -1085,10 +1085,7 @@
       }
 
       // 현재 시간 기준으로 기상청 기준 날짜 가져오는 함수
-      function getBaseTime() {
-        const now = new Date();
-        const hour = now.getHours();
-
+      function getBaseTime(hour) {
         const times = [2, 5, 8, 11, 14, 17, 20, 23]; // 기상청 지원 base 시간
         let baseHour = 23; // 기본값 (가장 늦은 시간)
 
@@ -1107,13 +1104,13 @@
         console.log("지금 나의 위치 :: " + nx + ny);
 
         // 오늘 날짜와 적절한 base_time 계산
-        const base_date = new Date()
-          .toISOString()
-          .slice(0, 10)
-          .replace(/-/g, "");
-        const base_time = getBaseTime(); //3시간 단위 (0500, 0800 ...)
+        const now = new Date();
+        const base_date = now.toISOString().slice(0, 10).replace(/-/g, "");
+        const hour = now.getHours();
+        const nowHourBase = String(hour).padStart(2, '0') + '00';
+        const base_time = getBaseTime(hour); //3시간 단위 (0500, 0800 ...)
 
-        console.log("기준시간 ::: " + base_time);
+        console.log("기준시간 ::: " + nowHourBase);
 
         // 날씨 API 에서 인코딩된 키 사용
         const serviceKey =
@@ -1140,7 +1137,6 @@
             items.forEach((item) => {
               const time = item.fcstTime;
               if (!forecast[time]) forecast[time] = {};
-
               if (item.category === "TMP") {
                 forecast[time].temp = item.fcstValue;
               } else if (item.category === "SKY") {
@@ -1149,6 +1145,11 @@
                 forecast[time].pty = item.fcstValue;
               }
             });
+
+            console.log(forecast);
+
+
+            const currentForecast = forecast[nowHourBase];
 
             // 상태 매핑 (FontAwesome 아이콘 사용)
             const skyMap = {
@@ -1167,28 +1168,20 @@
               7: "fa-solid fa-cloud-meatball", // 함박눈
             };
 
-            // 시간 정보
-            const forecastTimes = Object.keys(forecast);
-
             // 전체 예보 시간 중 첫 번째 항목만 선택
-            if (forecastTimes.length > 0) {
-              const selectedTime = forecastTimes[0];
-              const tmp = forecast[selectedTime].temp;
+              const tmp = currentForecast.temp;
 
               let status = null;
 
-              if (forecast[selectedTime].pty == 0) {
-                status = skyMap[forecast[selectedTime].sky];
+              if (currentForecast.pty == 0) {
+                status = skyMap[currentForecast.sky];
               } else {
-                status = ptyMap[forecast[selectedTime].pty];
+                status = ptyMap[currentForecast.pty];
               }
 
-              console.log(`[${selectedTime}] 기온: ${tmp}°C / 상태: ${status}`);
+              console.log(`[${nowHourBase}] 기온: ${tmp}°C / 상태: ${status}`);
               let whetherTag = `<i class="${status}"></i> &nbsp; ${tmp}°C`;
               weatherinfo.innerHTML = whetherTag;
-            } else {
-              console.log("예보 정보가 없습니다.");
-            }
           })
           .catch((error) => {
             console.error("날씨 정보를 가져오는 데 실패했습니다:", error);
