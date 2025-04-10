@@ -413,7 +413,7 @@
       }
 
       .btn-submit {
-        width: 90px;
+        width: 100px;
         padding: 12px;
         border: 1px solid white;
         background-color: rgb(123, 89, 45);
@@ -437,14 +437,19 @@
         border-radius: 5px;
         margin-left: auto;
         margin-right: auto;
-        display: flex;
-        flex-direction: row;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 80px 1fr;
         align-items: center;
         border: 0px solid rgb(165, 165, 165);
         background-color: rgb(246, 242, 234);
+        border-radius: 15px;
       }
 
       .commentProfile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         margin-left: 20px;
       }
 
@@ -805,7 +810,7 @@
       // 방명록 등록 기능
       $("#guestSubmit").click(async function () {
         let name = $("#guestName").val();
-        let content = $("#guestContent").val();
+        let content = $("#guestContent").val().replace(/\n/g, " ");
 
         if (name.trim() === "" || content.trim() === "") {
           Swal.fire({
@@ -1415,6 +1420,7 @@
           id="guestContent"
           rows="3"
           placeholder="내용을 입력하세요"
+          wrap="off"
         ></textarea>
       </div>
       <div class="btn-location">
