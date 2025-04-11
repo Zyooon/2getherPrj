@@ -1,5 +1,7 @@
 # 📰 2GETHER
 #####  내일배움캠프 온보딩 프로젝트 : 팀원 소개 및 방명록 웹애플리케이션
+![image](https://github.com/user-attachments/assets/96c12cbc-3aab-4e35-9157-3a1fee947735)
+
 
  
 ## ✨ Overview
