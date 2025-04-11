@@ -89,3 +89,11 @@
 ![제목 없는 다이어그램 drawio](https://github.com/user-attachments/assets/7e73caa2-ebad-444a-8f3c-1c2871bc2760)
 (https://drive.google.com/file/d/1URu6bP532CQfttGwlm5Mdsqcy1ERQcex/view)
 
+## 💞 팀원 소개
+##### ❤️‍🔥 2GETHER 프로젝트를 만든 팀원들을 소개합니다!
+
+| **김도균** | **문정호** | **박소희** | **우지운** | **이동근** | **이효선** |
+|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| <img src="images/member_kim.png" width="200"> | <img src="images/member_moon.png" width="200"> | <img src="images/member_park.png" width="200"> | <img src="images/member_woo.png" width="200"> | <img src="images/member_lee_dg.png" width="200"> | <img src="images/member_lee_hs.png" width="200"> |
+| 팀원 추가 기능 구현 | 상세페이지 - 프로필 | 방명록 | 메인페이지<br/>에이스 | 팀원 조회 기능 구현 | 상세페이지 - 댓글창<br/>팀장 |
+
