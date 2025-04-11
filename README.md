@@ -94,6 +94,5 @@
 
 | **김도균** | **문정호** | **박소희** | **우지운** | **이동근** | **이효선** |
 |:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
-| <img src="images/member_kim.png" width="200"> | <img src="images/member_moon.png" width="200"> | <img src="images/member_park.png" width="200"> | <img src="images/member_woo.png" width="200"> | <img src="images/member_lee_dg.png" width="200"> | <img src="images/member_lee_hs.png" width="200"> |
 | 팀원 추가 기능 구현 | 상세페이지 - 프로필 | 방명록 | 메인페이지<br/>에이스 | 팀원 조회 기능 구현 | 상세페이지 - 댓글창<br/>팀장 |
 
