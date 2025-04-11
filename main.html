@@ -1118,9 +1118,9 @@
 
           // 예보 시간 기준으로 정렬 (선택 사항)
           const forecast = {};
+          forecast[nowHourBase] = {};
 
           items.forEach((item) => {
-            if (!forecast[nowHourBase]) forecast[nowHourBase] = {};
             if (item.fcstTime === nowHourBase) {
               if (item.category === "TMP") {
                 forecast[nowHourBase].temp = item.fcstValue;
